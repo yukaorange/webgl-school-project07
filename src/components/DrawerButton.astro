@@ -1,0 +1,70 @@
+<button class="drawer-button" id="drawer-button">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<style lang="scss">
+  .drawer-button {
+    display: none;
+    position: fixed;
+    top: 7px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    z-index: 1000;
+    @include large {
+      //ノートPC（1024px）
+      display: block;
+    }
+
+    //ボタン横線
+    span {
+      display: block;
+      position: absolute;
+      width: 20px;
+      height: 2px;
+      background: $black;
+      transition: 0.3s ease-in-out;
+      &:nth-child(1) {
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:nth-child(2) {
+        top: calc(50% - 8px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+      &:nth-child(3) {
+        top: calc(50% + 8px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+    &.active span:nth-child(1) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+    }
+    &.active span:nth-child(2) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+    &.active span:nth-child(3) {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      animation: drawer-bar forwards 0.8s ease;
+      @keyframes drawer-bar {
+        0% {
+          opacity: 1;
+        }
+        100% {
+          opacity: 0;
+        }
+      }
+    }
+  }
+</style>

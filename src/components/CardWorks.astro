@@ -1,0 +1,26 @@
+---
+const { title, description, thumbnail, url, alt } = Astro.props;
+import { Image } from "@astrojs/image/components";
+---
+
+<a href={url} class="card">
+  <div class="card__inner">
+    <div class="card__thumbnail">
+      <Image src={thumbnail} width={600} height={400} alt={alt} />
+    </div>
+    <div class="card__body">
+      <h3 class="card__lead">
+        {title}
+      </h3>
+    </div>
+  </div>
+</a>
+
+<style lang="scss">
+  .card {
+    padding: 3.2rem;
+  }
+  .card__body {
+    margin-top: 2.4rem;
+  }
+</style>

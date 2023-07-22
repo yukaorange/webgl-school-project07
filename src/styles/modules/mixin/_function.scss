@@ -1,0 +1,14 @@
+@use "../variables/variables";
+@use "./media";
+
+@function myClamp($min: 0, $max: 0, $minView: variables.$minView, $maxView: variables.$maxView) {
+  $a: calc(($max - $min) / ($maxView - $minView));
+  $b: ($min - $a * $minView);
+  @return clamp(#{$min}px, #{$a * 100}vw + #{$b}px, #{$max}px);
+}
+@function myClampMinus($min: 0, $max: 0, $minView: variables.$minView, $maxView: variables.$maxView) {
+  $a: calc(($min - $max) / ($maxView - $minView));
+  $b: ($max - $a * $minView);
+  @return clamp(#{$min}px, #{$a * 100}vw + #{$b}px, #{$max}px);
+}
+

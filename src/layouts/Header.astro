@@ -1,0 +1,49 @@
+---
+import DrawerButton from "../components/DrawerButton.astro";
+import { Image } from "@astrojs/image/components";
+import DrawerMenu from "../components/DrawerMenu.astro";
+import Gnav from "../components/Gnav.astro";
+---
+
+<header class="header">
+  <div class="header__wrapper">
+    <div class="header__inner">
+      <a href="" class="header__logo">
+        <h1>taka...web</h1>
+      </a>
+      <Gnav />
+      <DrawerButton />
+      <DrawerMenu />
+    </div>
+  </div>
+</header>
+
+<style lang="scss">
+  .header {
+    // background-color: var(--gray);
+  }
+  .header__wrapper {
+    margin-inline: auto;
+    max-width: var(--max-width);
+  }
+  .header__inner {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+  .header__logo {
+    display: block;
+    width: fit-content;
+    padding: 1.2rem 1.6rem;
+    border: 1px solid var(--black);
+    h1 {
+      font-size: 2.4rem;
+      color: var(--black);
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .header__inner {
+      padding-top: 1.6rem;
+      padding-bottom: 1.6rem;
+    }
+  }
+</style>

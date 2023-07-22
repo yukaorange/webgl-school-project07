@@ -1,0 +1,21 @@
+{
+	"name": "sample",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"start": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro"
+	},
+	"dependencies": {
+		"@astrojs/image": "^0.17.2",
+		"@fontsource/kiwi-maru": "^5.0.5",
+		"@fontsource/m-plus-rounded-1c": "^5.0.5",
+		"astro": "^2.7.0",
+		"lil-gui": "^0.18.0",
+		"sass": "^1.58.1",
+		"three": "^0.149.0"
+	}
+}

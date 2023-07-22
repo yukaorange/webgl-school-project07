@@ -1,0 +1,9 @@
+@use "../variables/variables";
+@use "../mixin/media";
+@use "../mixin/function";
+
+@mixin inner {
+  max-width: 90vw;
+  margin-left: auto;
+  margin-right: auto;
+}

@@ -1,0 +1,9 @@
+@use "../variables/variables";
+@use "./media";
+@mixin text($minFontSize: 14, $maxFontSize: 16, $lineHeight: 1.5, $letterSpacing: 0.05, $minView: variables.$minView, $maxView: variables.$maxView) {
+  $a: calc(($maxFontSize - $minFontSize) / ($maxView - $minView));
+  $b: ($minFontSize - $a * $minView);
+  font-size: clamp(#{$minFontSize}px, #{$a * 100}vw + #{$b}px , #{$maxFontSize}px);
+  line-height: $lineHeight;
+  letter-spacing: #{$letterSpacing}em;
+}

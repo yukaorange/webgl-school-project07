@@ -1,0 +1,31 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Button from "@/components/Button.astro";
+import Section from "@/layouts/Section.astro";
+import CardWorks from "@/components/CardWorks.astro";
+import practiceThumb01 from "@/images/textures/square.jpg";
+---
+
+<Layout title="takaoka_webdesigner">
+  <Main>
+    <Section>
+      <div class="cards">
+        <CardWorks
+          title="cube"
+          description="webgl practice01"
+          thumbnail={practiceThumb01}
+          url="/webgl/practice01"
+        />
+      </div>
+    </Section>
+  </Main>
+</Layout>
+
+<style lang="scss">
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+</style>

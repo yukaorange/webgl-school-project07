@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="section__inner">
+    <div class="section__body">
+      <slot />
+    </div>
+  </div>
+</section>
+
+<style>
+  .section {
+  }
+
+  .section__inner {
+    margin-inline: auto;
+    max-width: var(--max-width);
+    border: 1px solid var(--black);
+  }
+
+  .section__body {
+    padding: 1.8rem;
+  }
+</style>
