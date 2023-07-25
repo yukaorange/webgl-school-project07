@@ -1,4 +1,4 @@
-<dialog class="drawer-nav" id="drawer-nav">
+<nav class="drawer-nav" id="drawer-nav">
   <div class="drawer-nav_wrapper">
     <div class="drawer-nav_inner">
       <ul>
@@ -17,7 +17,12 @@
       </ul>
     </div>
   </div>
-</dialog>
-
+</nav>
 <style lang="scss">
+  .drawer-nav {
+    display: none;
+  }
+  .drawer-nav.active {
+    // display: block;
+  }
 </style>

@@ -8,8 +8,8 @@ import Gnav from "../components/Gnav.astro";
 <header class="header">
   <div class="header__wrapper">
     <div class="header__inner">
-      <a href="" class="header__logo">
-        <h1>taka...web</h1>
+      <a href="/" class="header__logo">
+        <h1>TKWD</h1>
       </a>
       <Gnav />
       <DrawerButton />
@@ -20,7 +20,11 @@ import Gnav from "../components/Gnav.astro";
 
 <style lang="scss">
   .header {
-    // background-color: var(--gray);
+    position: sticky;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10000;
   }
   .header__wrapper {
     margin-inline: auto;
@@ -40,9 +44,9 @@ import Gnav from "../components/Gnav.astro";
       color: var(--black);
     }
   }
-  @media screen and (max-width: 768px) {
+  @media (max-width: 768px) {
     .header__inner {
-      padding-top: 1.6rem;
+      padding-top: 0.8rem;
       padding-bottom: 1.6rem;
     }
   }

@@ -1,0 +1,88 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Button from "@/components/Button.astro";
+import Section from "@/layouts/Section.astro";
+import { Image } from "@astrojs/image/components";
+
+import image01 from "@/images/sneakers/sneaker01.jpg";
+import image02 from "@/images/sneakers/sneaker02.jpg";
+import image03 from "@/images/sneakers/sneaker03.jpg";
+import image04 from "@/images/sneakers/sneaker04.jpg";
+import image05 from "@/images/sneakers/sneaker05.jpg";
+import image06 from "@/images/sneakers/sneaker06.jpg";
+import image07 from "@/images/sneakers/sneaker07.jpg";
+import image08 from "@/images/sneakers/sneaker08.jpg";
+
+const images = [
+  image01,
+  image02,
+  image03,
+  image04,
+  image05,
+  image06,
+  image07,
+  image08,
+];
+---
+
+<Layout title="takaoka_webdesigner">
+  <Main>
+    <div class="spacer"></div>
+    <div class="sticky-container" data-content-sticky="0">
+      <div class="scroll-container">
+        <ul class="list" data-scroll-slider="0">
+          {
+            images.map((image, index) => (
+              <li class="list__item" data-scroll-slider-item>
+                <Image
+                  src={image}
+                  alt="sneaker"
+                  width="1024px"
+                  layout="responsive"
+                  loading="lazy"
+                />
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="spacer"></div>
+  </Main>
+</Layout>
+
+<script>
+  import { init } from "@/js/animation/animation01/index";
+
+  window.addEventListener("DOMContentLoaded", () => {
+      init();
+  });
+</script>
+
+<style lang="scss">
+  .sticky-container {
+    height: 400vh;
+  }
+  .scroll-container {
+    height: 100vh;
+    overflow: hidden;
+    position: sticky;
+    top: 0;
+    left: 0;
+  }
+  .list {
+    position: relative;
+  }
+
+  .list__item {
+    position: absolute;
+    width: 50rem;
+    max-width: 80%;
+    aspect-ratio: 4/3;
+  }
+
+  .spacer {
+    height: 50vh;
+  }
+</style>

@@ -12,3 +12,11 @@
   @return clamp(#{$min}px, #{$a * 100}vw + #{$b}px, #{$max}px);
 }
 
+@function px_to_vw($px) {
+  $vw: 1366;
+  @return ($px / $vw) * 100vw;
+}
+@function px_to_vw_small($px) {
+  $vw: 360;
+  @return ($px / $vw) * 100vw;
+}

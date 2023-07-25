@@ -21,6 +21,17 @@ import { Image } from "@astrojs/image/components";
     padding: 3.2rem;
   }
   .card__body {
-    margin-top: 2.4rem;
+    margin-top: 1.8rem;
+  }
+  .card__thumbnail {
+    aspect-ratio: 16/9;
+  }
+  @media (max-width: 768px) {
+    .card {
+      padding: 0rem;
+    }
+    .card__body {
+      margin-top: 1.0rem;
+    }
   }
 </style>

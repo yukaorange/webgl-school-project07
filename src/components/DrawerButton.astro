@@ -13,8 +13,8 @@
     width: 40px;
     height: 40px;
     z-index: 1000;
-    @include large {
-      //ノートPC（1024px）
+    
+    @media screen and (max-width: 1024px) {
       display: block;
     }
 
@@ -24,7 +24,7 @@
       position: absolute;
       width: 20px;
       height: 2px;
-      background: $black;
+      background-color: var(--black);
       transition: 0.3s ease-in-out;
       &:nth-child(1) {
         top: 50%;

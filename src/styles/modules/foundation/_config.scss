@@ -2,11 +2,14 @@
 @use "../mixin/mixin";
 :root {
   --vw: 136.6;
-  --max-width: min(1540px, 90vw);
-  @include mixin.medium {
-    //タブレット
+  @media (max-width: 768px) {
     --vw: 36;
   }
+
+  --max-width: min(calc(1920px * 0.9), calc(100% - 4rem));
+  --note-width: 1024px;
+  --tab-width: 768px;
+  --mobile-width: 360px;
 
   --black: #333333;
   --white: #ffffff;
@@ -22,11 +25,34 @@
 
 html {
   font-size: calc(100vw / var(--vw));
+  // scroll-behavior: smooth;
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }
 
 body {
   font-family: "M PLUS Rounded 1c", sans-serif;
   color: var(--black);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
   & ._kiwi {
     font-family: "Kiwi Maru", sans-serif;
   }
@@ -74,25 +100,25 @@ li {
   font-size: 1.6rem;
 }
 
-@include mixin.medium {
-  //タブレット
+@media (max-width: 768px) {
+  //モバイル
   h1 {
-    font-size: 2.4rem;
-  }
-  h2 {
     font-size: 2rem;
   }
-  h3 {
+  h2 {
     font-size: 1.8rem;
   }
-  h4 {
+  h3 {
     font-size: 1.6rem;
   }
-  h5 {
+  h4 {
     font-size: 1.4rem;
   }
-  h6 {
+  h5 {
     font-size: 1.2rem;
+  }
+  h6 {
+    font-size: 1rem;
   }
   p {
     font-size: 1.4rem;

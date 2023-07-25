@@ -4,7 +4,9 @@ import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
 import CardWorks from "@/components/CardWorks.astro";
+import animationThumb01 from "@/images/sneakers/sneaker01.jpg";
 import practiceThumb01 from "@/images/textures/square.jpg";
+import practiceThumb02 from "@/images/girls/girls01.png";
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -17,6 +19,22 @@ import practiceThumb01 from "@/images/textures/square.jpg";
           thumbnail={practiceThumb01}
           url="/webgl/practice01"
         />
+        <CardWorks
+          title="slider lenis"
+          description="webgl practice02"
+          thumbnail={practiceThumb02}
+          url="/webgl/practice02"
+        />
+      </div>
+    </Section>
+    <Section>
+      <div class="cards">
+        <CardWorks
+          title="side scroll"
+          description="webgl practice01"
+          thumbnail={animationThumb01}
+          url="/animation/practice01"
+        />
       </div>
     </Section>
   </Main>
@@ -26,6 +44,11 @@ import practiceThumb01 from "@/images/textures/square.jpg";
   .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
+    row-gap: 3.2rem;
+  }
+  @media (max-width: 768px) {
+    .cards {
+      grid-template-columns: repeat(1, 1fr);
+    }
   }
 </style>
