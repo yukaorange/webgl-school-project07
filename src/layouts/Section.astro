@@ -1,26 +1,46 @@
+---
+const { heading } = Astro.props;
+---
+
 <section class="section">
   <div class="section__inner">
+    <div class="section__header">
+      <h2 class="section__heading">{heading}</h2>
+    </div>
     <div class="section__body">
       <slot />
     </div>
   </div>
 </section>
 
-<style>
+<style lang="scss">
   .section {
+    &:nth-of-type(1){
+      margin-top: 10rem;
+    }
   }
 
-  .section + .section{
+  .section + .section {
     margin-top: 5rem;
   }
 
   .section__inner {
+    padding: 2.4rem;
     margin-inline: auto;
     max-width: var(--max-width);
     border: 1px solid var(--black);
   }
 
+  .section__header {
+    display: grid;
+    justify-items: end;
+  }
+
+  .section__heading {
+    font-weight: 700;
+  }
+
   .section__body {
-    padding: 1.8rem;
+    margin-top: 3.2rem;
   }
 </style>

@@ -25,7 +25,6 @@
 
 html {
   font-size: calc(100vw / var(--vw));
-  // scroll-behavior: smooth;
 }
 
 html.lenis {
@@ -91,7 +90,7 @@ a {
   color: var(--black);
   &:hover {
     text-decoration: none;
-    color: var(--gray);
+    color: var(--lightgray);
   }
 }
 

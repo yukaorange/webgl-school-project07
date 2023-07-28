@@ -49,6 +49,31 @@ const images = [
       </div>
     </div>
     <div class="spacer"></div>
+    <div class="sticky-container" data-content-sticky="1">
+      <div class="scroll-container">
+        <ul class="list" data-scroll-slider="1">
+          {
+            images.map((image, index) => (
+              <li class="list__item" data-scroll-slider-item>
+                <span
+                  class="list__image-container"
+                  data-scroll-slider-img-container
+                >
+                  <Image
+                    src={image}
+                    alt="sneaker"
+                    width="1024px"
+                    layout="responsive"
+                    loading="lazy"
+                  />
+                </span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+    <div class="spacer"></div>
   </Main>
 </Layout>
 
@@ -56,13 +81,14 @@ const images = [
   import { init } from "@/js/animation/animation01/index";
 
   window.addEventListener("DOMContentLoaded", () => {
-      init();
+    init();
   });
 </script>
 
 <style lang="scss">
   .sticky-container {
     height: 400vh;
+    border: 1px solid var(--gray);
   }
   .scroll-container {
     height: 100vh;
@@ -80,6 +106,13 @@ const images = [
     width: 50rem;
     max-width: 80%;
     aspect-ratio: 4/3;
+  }
+
+  .list__image-container {
+    // width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
   }
 
   .spacer {

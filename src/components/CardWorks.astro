@@ -19,6 +19,9 @@ import { Image } from "@astrojs/image/components";
 <style lang="scss">
   .card {
     padding: 3.2rem;
+    border: 1px solid var(--black);
+  }
+  .card__inner {
   }
   .card__body {
     margin-top: 1.8rem;
@@ -28,10 +31,10 @@ import { Image } from "@astrojs/image/components";
   }
   @media (max-width: 768px) {
     .card {
-      padding: 0rem;
+      padding: 1.6rem;
     }
     .card__body {
-      margin-top: 1.0rem;
+      margin-top: 1rem;
     }
   }
 </style>

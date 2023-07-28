@@ -11,7 +11,7 @@ import practiceThumb02 from "@/images/girls/girls01.png";
 
 <Layout title="takaoka_webdesigner">
   <Main>
-    <Section>
+    <Section heading="webgl">
       <div class="cards">
         <CardWorks
           title="cube"
@@ -27,7 +27,7 @@ import practiceThumb02 from "@/images/girls/girls01.png";
         />
       </div>
     </Section>
-    <Section>
+    <Section heading="animation">
       <div class="cards">
         <CardWorks
           title="side scroll"
@@ -44,6 +44,7 @@ import practiceThumb02 from "@/images/girls/girls01.png";
   .cards {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
     row-gap: 3.2rem;
   }
   @media (max-width: 768px) {

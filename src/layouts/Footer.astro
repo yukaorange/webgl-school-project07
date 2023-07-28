@@ -3,9 +3,34 @@ import Fnav from "../components/Fnav.astro";
 ---
 
 <footer class="footer">
-  <div class="footer_wrapper">
-    <div class="footer_inner">
+  <div class="footer__wrapper">
+    <div class="footer__inner">
+      <a href="/" class="footer__logo">
+        <p>fin</p>
+      </a>
       <Fnav />
     </div>
   </div>
 </footer>
+
+<style lang="scss">
+  .footer {
+    position: relative;
+    z-index: 1000;
+    padding-top: 20rem;
+    background-color: var(----lightgray);
+  }
+  .footer__wrapper {
+    margin-inline: auto;
+    max-width: var(--max-width);
+  }
+  .footer__inner {
+  }
+  .footer__logo {
+    display: block;
+    width: fit-content;
+    padding: 1.2rem 1.6rem;
+    border: 1px solid var(--black);
+    font-size: 1rem;
+  }
+</style>
