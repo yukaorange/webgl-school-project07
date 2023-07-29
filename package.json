@@ -11,12 +11,14 @@
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.17.2",
+		"@fontsource-variable/roboto-mono": "^5.0.6",
 		"@fontsource/kiwi-maru": "^5.0.5",
 		"@fontsource/m-plus-rounded-1c": "^5.0.5",
 		"@studio-freight/lenis": "^1.0.19",
 		"astro": "^2.7.0",
 		"gsap": "^3.12.2",
 		"lil-gui": "^0.18.0",
+		"postcss-preset-env": "^9.1.0",
 		"sass": "^1.58.1",
 		"three": "^0.149.0",
 		"vite-plugin-glslify": "^2.0.2"

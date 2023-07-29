@@ -18,12 +18,12 @@ export class HorizontalSlider {
      */
     Object.assign(this.properties, params);
   }
+
   // スクロール位置に合わせてスライダーを移動するメソッド
   scroll(scrollRatio) {
     const element = this.properties.element;
     if (element) {
       this.currentPosX = this.distance * scrollRatio;
-      // console.log(`this.currentPosX: ${this.currentPosX}`);
       this.updateTranslate(element);
     }
   }

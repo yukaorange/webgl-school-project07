@@ -204,6 +204,7 @@ class SliderItem {
   updateTranslate(progress) {
     if (this.imgContainerElement) {
       this.scale = this.getScale(progress);
+
       this.imgContainerElement.style.transform = `translate(${this.currentPosX}px, 0px) scale(${this.scale})`;
     }
   }

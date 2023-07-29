@@ -9,7 +9,7 @@ import Gnav from "../components/Gnav.astro";
   <div class="header__wrapper">
     <div class="header__inner">
       <a href="/" class="header__logo">
-        <h1>TKWD</h1>
+        <h1 class="_roboto">TKWD</h1>
       </a>
       <Gnav />
       <DrawerButton />
@@ -37,10 +37,14 @@ import Gnav from "../components/Gnav.astro";
   .header__logo {
     display: block;
     width: fit-content;
-    padding: 1.2rem 1.6rem;
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    padding-top: 1.6rem;
+    padding-bottom: 1.2rem;
+    line-height: 1;
     border: 1px solid var(--black);
     h1 {
-      font-size: 2.4rem;
+      font-size: 2rem;
       color: var(--black);
     }
   }
