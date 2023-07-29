@@ -126,12 +126,10 @@ const irusts = [
   });
 
   const lenis = new Lenis({
-    smoothTouch:true
+    smoothTouch: true,
+    duration: 0.1,
+    lerp: 0.1,
   });
-
-  // lenis.on("scroll", (e) => {
-  //   console.log(e);
-  // });
 
   function raf(time) {
     lenis.raf(time);
