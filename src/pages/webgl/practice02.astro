@@ -127,6 +127,7 @@ const irusts = [
 
   const lenis = new Lenis({
     smoothTouch: true,
+    easing: (t) => Math.sin((t * Math.PI) / 2),
   });
 
   function raf(time) {
