@@ -27,7 +27,7 @@ export class TransformHandler {
     let visibility = "visible";
 
     if (this.progress <= 0) {
-      rotate = this.progress * -1;
+      rotate = this.progress * -0;
     } else if (this.progress > 0 && this.progress < 0.5) {
       rotate = 0;
     } else {
