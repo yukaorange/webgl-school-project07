@@ -48,15 +48,15 @@ html.lenis {
 }
 
 body {
-  font-family: 'Roboto Mono Variable', sans-serif;
+  font-family: "Roboto Mono Variable", sans-serif;
   color: var(--black);
   line-height: 1.5;
   letter-spacing: 0.01em;
   & ._kiwi {
     font-family: "Kiwi Maru", sans-serif;
   }
-  & ._roboto{
-    font-family: 'Roboto Mono Variable', sans-serif;
+  & ._roboto {
+    font-family: "Roboto Mono Variable", sans-serif;
   }
   margin: 0;
   // モーダル展開時など想定
@@ -65,14 +65,17 @@ body {
 
 h1 {
   font-size: 3.2rem;
+  font-weight: 700;
 }
 
 h2 {
   font-size: 2.4rem;
+  font-weight: 500;
 }
 
 h3 {
   font-size: 1.8rem;
+  font-weight: 400;
 }
 
 h4 {
@@ -85,10 +88,12 @@ h5 {
 
 p {
   font-size: 1.6rem;
+  font-weight: 400;
 }
 
 a {
   font-size: 1.6rem;
+  font-weight: 400;
   text-decoration: none;
   color: var(--black);
   &:hover {

@@ -16,28 +16,212 @@ import image08 from "@/images/foodie/foodie08.jpg";
 import image09 from "@/images/foodie/foodie09.jpg";
 
 const images = [
-  image01,
-  image02,
-  image03,
-  image04,
-  image05,
-  image06,
-  image07,
-  image08,
-  image09,
+  {
+    image: image01,
+    text: "Because it saw the salad dressing! This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.",
+  },
+  {
+    image: image02,
+    text: "Another favorite joke of ours goes like this - Why don't scientists trust atoms? Because they make up everything! Here, we celebrate our love for intellectual wordplay and dry humor.",
+  },
+  {
+    image: image03,
+    text: "It's a simple, yet effective pun, blending our love for food with our knack for humor. American humor, much like our culture, is a melting pot of different elements. ",
+  },
+  {
+    image: image04,
+    text: "Whether it's over a hot dog at a baseball game, or a cup of coffee in a bustling city café, our jokes are our social glue, our universal language of camaraderie and shared experiences.",
+  },
+  {
+    image: image05,
+    text: "To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ",
+  },
+  {
+    image: image06,
+    text: "So, next time you come across an American joke, remember, it's more than just a punchline, it's a slice of Americana.",
+  },
+  {
+    image: image07,
+    text: "This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.",
+  },
+  {
+    image: image08,
+    text: "An impasta! It's a simple, yet effective pun, blending our love for food with our knack for humor. American humor, much like our culture, is a melting pot of different elements.",
+  },
+  {
+    image: image09,
+    text: "To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ",
+  },
+  {
+    image: image06,
+    text: "So, next time you come across an American joke, remember, it's more than just a punchline, it's a slice of Americana.",
+  },
 ];
 ---
 
 <Layout title="takaoka_webdesigner">
-  <Main />
+  <Main>
+    <ul class="list">
+      {
+        images.map((image) => (
+          <li class="item">
+            <div class="sticky-container">
+              <div class="sticky-pinner">
+                <div class="card">
+                  <div class="card__inner">
+                    <div class="card__image">
+                      <Image
+                        src={image.image}
+                        alt="foodies"
+                        width={960}
+                        height={1440}
+                        loading="lazy"
+                      />
+                    </div>
+                    <div class="card__body">
+                      <p class="card__text">{image.text}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+    <div class="spacer"></div>
+    <Main />
+
+    <script>
+      import { ScrollAmountHandler } from "@/js/animation/animation02/ScrollAmountHandler.js";
+      import { TransformHandler } from "@/js/animation/animation02/TransformHandler.js";
+
+      const sliders = [...document.querySelectorAll(".item")];
+      const slideImages = [...document.querySelectorAll(".card")];
+
+      let scrollAmountHandler = [];
+      let transformHandler = [];
+
+      sliders.map((slider, i) => {
+        scrollAmountHandler[i] = new ScrollAmountHandler({
+          targetDom: slider,
+        });
+        transformHandler[i] = new TransformHandler({ target: slideImages[i] });
+      });
+
+      window.addEventListener("scroll", () => {
+        scrollAmountHandler.forEach((handler, i) => {
+          handler.update();
+          let scrollRatio = handler.getScrollRatio();
+          transformHandler[i].updateProgress(scrollRatio);
+        });
+      });
+
+      window.addEventListener("resize", () => {
+        scrollAmountHandler.forEach((handler, i) => {
+          handler.update();
+          transformHandler[i].update();
+        });
+      });
+
+      window.addEventListener("load", () => {
+        scrollAmountHandler.forEach((handler, i) => {
+          handler.update();
+          transformHandler[i].update();
+        });
+      });
+    </script>
+
+    <style lang="scss">
+      .list {
+      }
+      .item {
+        visibility: visible;
+        width: 100%;
+        margin-bottom: calc(-100vh + 4.16667vw);
+        height: calc(200vh - 6.25vw); //6.25 = 100/1600
+        &:last-of-type {
+          .card {
+            visibility: visible !important;
+          }
+        }
+      }
+      .sticky-container {
+        position: relative;
+        height: 400vh; //後ろで抜けていくのが見えないようにするための余白（数値はテキトーに、大きな値で）
+      }
+
+      .sticky-pinner {
+        position: sticky;
+        top: 0;
+        height: 100vh;
+        display: grid;
+        align-items: center;
+      }
+
+      .card {
+        height: calc(100vh - 8vw);
+        width: calc(100% - 10vw);
+        margin-inline: auto;
+        overflow: hidden;
+        display: grid;
+        border: 1px solid var(--black);
+        padding: 2vw;
+        position: relative;
+        z-index: 0;
+        background-color: var(--gray);
+      }
+
+      .card__inner {
+        display: grid;
+        justify-items: center;
+        width: 100%;
+        height: 100%;
+      }
+
+      .card__image {
+        position: relative;
+        width: 30%;
+        min-width: 375px;
+      }
+
+      .card__body {
+        position: absolute;
+        z-index: -1;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .card__text {
+        font-size: 10rem;
+        font-weight: bold;
+        color: var(--white);
+        animation-name: textAnime;
+        animation-duration: 80s;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        white-space: nowrap;
+      }
+
+      .spacer {
+        height: 400vh;
+      }
+
+      @media (max-width: 768px) {
+        .card__image {
+          min-width: 280px;
+        }
+      }
+
+      @keyframes textAnime {
+        0% {
+          transform: translateX(60%);
+        }
+        100% {
+          transform: translateX(-100%);
+        }
+      }
+    </style>
+  </Main>
 </Layout>
-
-<script>
-  import { init } from "@/js/animation/animation01/index";
-
-  window.addEventListener("DOMContentLoaded", () => {
-    init();
-  });
-</script>
-
-<style lang="scss"></style>
