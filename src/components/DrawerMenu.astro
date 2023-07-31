@@ -1,28 +1,88 @@
+---
+---
+
 <nav class="drawer-nav" id="drawer-nav">
-  <div class="drawer-nav_wrapper">
-    <div class="drawer-nav_inner">
-      <ul>
-        <li>
-          <a href="">home</a>
-        </li>
-        <li>
-          <a href="">about</a>
-        </li>
-        <li>
-          <a href="">service</a>
-        </li>
-        <li>
-          <a href="">contact</a>
-        </li>
-      </ul>
-    </div>
+  <div class="drawer-nav__inner">
+    <ul class="drawer-nav__list">
+      <li>
+        <span class="drawer-nav__item-wrap">
+          <a href="https://twitter.com/home?lang=ja"
+            ><i class="fa-brands fa-twitter"></i>(X)</a
+          >
+        </span>
+      </li>
+      <li>
+        <span class="drawer-nav__item-wrap">
+          <a href="https://github.com/yukaorange/portfolio02"
+            ><i class="fa-brands fa-github"></i></a
+          >
+        </span>
+      </li>
+    </ul>
   </div>
 </nav>
 <style lang="scss">
   .drawer-nav {
     display: none;
+    position: fixed;
+    z-index: 10;
+    inset: 0;
+    justify-items: center;
+    background-color: var(--lightgray);
   }
   .drawer-nav.active {
-    // display: block;
+    display: grid;
+  }
+  .drawer-nav__inner {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+  .drawer-nav__list {
+    display: flex;
+    gap: 8rem;
+    li {
+      a {
+        display: block;
+        font-size: 3rem;
+        position: relative;
+      }
+    }
+  }
+  .drawer-nav__item-wrap {
+    display: block;
+    overflow: hidden;
+    a {
+      transform: translateY(100%);
+    }
+  }
+  .drawer-nav.active .drawer-nav__item-wrap {
+    a {
+      animation-name: slideIn;
+      animation-duration: 0.5s;
+      animation-delay: 0.2s;
+      animation-timing-function: ease-in-out;
+      animation-fill-mode: forwards;
+    }
+    @keyframes slideIn {
+      0% {
+        transform: translateY(100%);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  }
+
+  @media screen and (max-width: 768px) {
+    .drawer-nav__list {
+      display: flex;
+      gap: 4rem;
+      li {
+        a {
+          font-size: 2.4rem;
+        }
+      }
+    }
   }
 </style>

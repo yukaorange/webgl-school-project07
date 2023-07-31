@@ -10,6 +10,7 @@
       "@/images/*": ["src/images/*"],
       "@/js/*": ["src/js/*"],
       "@/styles/*": ["src/styles/*"],
-    }
+    },
+    
   }
 }

@@ -79,7 +79,9 @@ const images = [
                       />
                     </div>
                     <div class="card__body">
-                      <p class="card__text">{image.text}</p>
+                      <div class="card__textband">
+                        <p class="card__text">{image.text}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -187,10 +189,17 @@ const images = [
 
       .card__body {
         position: absolute;
+        width: 100%;
         z-index: -1;
         top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        transform: translateY(-50%);
+      }
+
+      .card__textband {
+        position: absolute;
+        z-index: -1;
+        left: 100%;
+        transform: translateY(-50%);
       }
 
       .card__text {
@@ -210,13 +219,14 @@ const images = [
 
       @media (max-width: 768px) {
         .card__image {
-          min-width: 280px;
+          width: 70%;
+          min-width: 200px;
         }
       }
 
       @keyframes textAnime {
         0% {
-          transform: translateX(60%);
+          transform: translateX(0%);
         }
         100% {
           transform: translateX(-100%);

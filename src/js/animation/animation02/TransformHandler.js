@@ -12,7 +12,7 @@ export class TransformHandler {
   update() {
     const diff = this.targetProgress - this.progress;
 
-    this.progress += diff * 0.01;
+    this.progress += diff * 0.098;
 
     this.updateTransform();
 
@@ -26,19 +26,21 @@ export class TransformHandler {
     let rotate = 0;
     let visibility = "visible";
 
+    let rotatePoint = 0.3;
+
     if (this.progress <= 0) {
-      rotate = this.progress * -0;
-    } else if (this.progress > 0 && this.progress < 0.5) {
+      // rotate = this.progress * 0;
+      rotate = 0;
+    } else if (this.progress > 0 && this.progress < rotatePoint) {
       rotate = 0;
     } else {
-      rotate = (this.progress - 0.5) * 5;
+      rotate = (this.progress - rotatePoint) * 5;
     }
 
     if (this.progress < 0.5) {
       scale = 1;
-    }
-    else {
-      scale = 1.0 + ((0.5 - this.progress) * 1) / 3;
+    } else {
+      scale = 1.0 + ((0.5 - this.progress) * 1) / 5;
     }
 
     if (this.targetProgress > 1.5) {
