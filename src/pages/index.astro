@@ -5,7 +5,8 @@ import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
 import CardWorks from "@/components/CardWorks.astro";
 import animationThumb01 from "@/images/sneakers/sneaker01.jpg";
-import animationThumb02 from "@/images/heritage/heritage02.jpg";
+import animationThumb02 from "@/images/foodie/foodie08.jpg";
+import animationThumb03 from "@/images/heritage/heritage02.jpg";
 import practiceThumb01 from "@/images/textures/square.jpg";
 import practiceThumb02 from "@/images/girls/girls01.png";
 ---
@@ -32,15 +33,21 @@ import practiceThumb02 from "@/images/girls/girls01.png";
       <div class="cards">
         <CardWorks
           title="horizontal scroll"
-          description="animation practice01"
+          description="animation practice"
           thumbnail={animationThumb01}
           url="/animation/practice01"
         />
         <CardWorks
-          title="slideshow mask-image"
-          description="animation practice01"
+          title="sticky gallery"
+          description="animation practice"
           thumbnail={animationThumb02}
           url="/animation/practice02"
+        />
+        <CardWorks
+          title="slideshow mask-image"
+          description="animation practice"
+          thumbnail={animationThumb03}
+          url="/animation/practice03"
         />
       </div>
     </Section>

@@ -4,151 +4,40 @@ import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
 import { Image } from "@astrojs/image/components";
-import Container from "@/layouts/Container.astro";
 
-// import image1 from "@/images/military/military01.jpg";
-// import image2 from "@/images/military/military02.jpg";
-// import image3 from "@/images/military/military03.jpg";
-// import image4 from "@/images/military/military04.jpg";
-// import image5 from "@/images/military/military05.jpg";
-// import image6 from "@/images/military/military06.jpg";
-// import image7 from "@/images/military/military07.jpg";
-// import image8 from "@/images/military/military08.jpg";
+import image01 from "@/images/foodie/foodie01.jpg";
+import image02 from "@/images/foodie/foodie02.jpg";
+import image03 from "@/images/foodie/foodie03.jpg";
+import image04 from "@/images/foodie/foodie04.jpg";
+import image05 from "@/images/foodie/foodie05.jpg";
+import image06 from "@/images/foodie/foodie06.jpg";
+import image07 from "@/images/foodie/foodie07.jpg";
+import image08 from "@/images/foodie/foodie08.jpg";
+import image09 from "@/images/foodie/foodie09.jpg";
 
-// const images = [image1, image2, image3, image4, image5, image6, image7, image8];
+const images = [
+  image01,
+  image02,
+  image03,
+  image04,
+  image05,
+  image06,
+  image07,
+  image08,
+  image09,
+];
 ---
 
 <Layout title="takaoka_webdesigner">
-  <Main>
-    <Container>
-      <div class="slideshow slideshow--mask">
-        <div class="slide slide1 active"></div>
-        <div class="slide slide2"></div>
-        <div class="slide slide3"></div>
-        <div class="slide slide4"></div>
-        <div class="slide slide5"></div>
-        <div class="slide slide6"></div>
-        <div class="slide slide7"></div>
-        <div class="slide slide8"></div>
-        <div class="slide slide9"></div>
-        <div class="slide slide10"></div>
-        <div class="slide slide11"></div>
-        <div class="slide slide12 before"></div>
-        <div class="slideshow__content">
-          <p class="slideshow__text _kiwi">heritage</p>
-        </div>
-      </div>
-    </Container>
-  </Main>
-
-  <script>
-    window.addEventListener("load", () => {
-      slideShowMask(".slideshow--mask .slide");
-    });
-    function slideShowMask(slide) {
-      setInterval(() => {
-        const slides = [...document.querySelectorAll(slide)];
-        const activeSlide = document.querySelector(`${slide}.active`);
-        const beforeSlide = document.querySelector(`${slide}.before`);
-        const activeSlideIndex = [...slides].indexOf(activeSlide);
-        const nextSlideIndex = activeSlideIndex + 1;
-        const nextSlide = slides[nextSlideIndex];
-
-        beforeSlide.classList.remove("before");
-        activeSlide.classList.remove("active");
-
-        if (nextSlide) {
-          activeSlide.classList.add("before");
-          nextSlide.classList.add("active");
-        } else {
-          activeSlide.classList.add("before");
-          slides[0].classList.add("active");
-        }
-      }, 4000);
-    }
-  </script>
-
-  <style lang="scss">
-    .slideshow.slideshow--mask {
-      width: calc(100% - 4rem);
-      // margin-inline: auto;
-      position: relative;
-      aspect-ratio: 16/9;
-      z-index: -1;
-      inset: 0;
-    }
-    .slideshow__content {
-      position: absolute;
-      bottom: -2rem;
-      right: -4rem;
-      padding-right: 4rem;
-      padding-bottom: 1.6rem;
-      padding-top: 1.6rem;
-      padding-left: 2.4em;
-      border: 1px solid var(--black);
-      z-index: 1000;
-      &::after {
-        content: "";
-        position: absolute;
-        z-index: 1000;
-        inset: 0;
-        backdrop-filter: grayscale(100%);
-      }
-    }
-    .slideshow__text {
-      z-index: 10;
-      font-size: 3.2rem;
-      font-weight: 500;
-      color: var(--white);
-      text-transform: uppercase;
-    }
-
-    .slideshow--mask .slide {
-      aspect-ratio: 16/9;
-    }
-
-    @for $i from 1 through 12 {
-      .slideshow.slideshow--mask .slide#{$i} {
-        position: absolute;
-        z-index: 1;
-        inset: 0;
-        background-repeat: repeat;
-        background-position: center;
-        background-size: cover;
-        mask-image: url("/mask/mask-image.png");
-        mask-position: center 200%;
-        mask-size: 200% 200%;
-        mask-repeat: no-repeat;
-        transition-duration: 4s;
-        transition-property: mask-position;
-        transition-timing-function: var(--easeInOutSine);
-      }
-    }
-
-    @for $i from 1 through 12 {
-      .slideshow.slideshow--mask .slide#{$i}.active {
-        mask-position: center 0%;
-        z-index: 3;
-      }
-    }
-
-    @for $i from 1 through 12 {
-      .slideshow.slideshow--mask .slide#{$i}.before {
-        mask-position: center 0%;
-        z-index: 2;
-      }
-    }
-
-    @for $i from 1 through 12 {
-      @if $i < 10 {
-        .slideshow.slideshow--mask .slide#{$i} {
-          background-image: url("/heritage/heritage0#{$i}.jpg");
-        }
-      } @else {
-        .slideshow.slideshow--mask .slide#{$i} {
-          background-image: url("/heritage/heritage#{$i}.jpg");
-        }
-      }
-    }
-  </style>
+  <Main />
 </Layout>
+
+<script>
+  import { init } from "@/js/animation/animation01/index";
+
+  window.addEventListener("DOMContentLoaded", () => {
+    init();
+  });
+</script>
+
+<style lang="scss"></style>
