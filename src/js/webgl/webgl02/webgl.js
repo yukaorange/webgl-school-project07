@@ -17,6 +17,7 @@ export class Sketch {
     this.scene = new THREE.Scene();
     this.container = options.dom;
 
+    this.frame = 0;
 
     this.width = this.container.offsetWidth;
     this.height = this.container.offsetHeight;
@@ -24,12 +25,22 @@ export class Sketch {
     this.Yaspect = this.height / this.width;
     //rendererについて、canvasがあればそれを使う
     let canvas = this.container.querySelector("canvas");
+
     if (canvas) {
       this.renderer = new THREE.WebGLRenderer({ canvas: canvas });
     } else {
       this.renderer = new THREE.WebGLRenderer();
       this.container.appendChild(this.renderer.domElement);
     }
+
+    this.gl = this.renderer.getContext("experimental-webgl");
+    this.ext = this.gl.getExtension("WEBGL_debug_renderer_info");
+    if (!this.ext) {
+      this.driver = "";
+    } else {
+      this.driver = this.gl.getParameter(this.ext.UNMASKED_RENDERER_WEBGL);
+    }
+
     this.renderer.setPixelRatio(window.devicePixelRatio);
     this.renderer.setSize(this.width, this.height);
     this.renderer.setClearColor(0x000000, 1);
@@ -393,13 +404,34 @@ export class Sketch {
     });
   }
 
+  //フレームレートを制御する
+  isLowerGPU() {
+    if (
+      this.driver.includes("Mali") ||
+      this.driver.includes("Adreno") ||
+      this.driver.includes("PowerVR") ||
+      this.driver.includes("Apple") ||
+      this.driver.includes("Intel")
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   /**
    * Render the scene.
    */
   render() {
+    requestAnimationFrame(this.render.bind(this));
     if (!this.isPlaying) {
       return;
     }
+    this.frame++;
+    this.isLower = this.isLowerGPU();
+    if (this.frame % 2 == 0 && this.isLower) {
+      return;
+    }
+
     const elapsedTime = this.clock.getElapsedTime();
     this.time = elapsedTime;
 
@@ -412,6 +444,5 @@ export class Sketch {
     // this.tl.progress(this.settings.progress);
 
     this.renderer.render(this.scene, this.camera);
-    requestAnimationFrame(this.render.bind(this));
   }
 }
