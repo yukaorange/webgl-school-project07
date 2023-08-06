@@ -428,7 +428,7 @@ export class Sketch {
     }
     this.frame++;
     this.isLower = this.isLowerGPU();
-    if (this.frame % 2 == 0 && this.isLower) {
+    if (this.frame % 3 == 0 && this.isLower) {
       return;
     }
 
