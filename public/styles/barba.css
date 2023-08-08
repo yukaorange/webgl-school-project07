@@ -69,3 +69,16 @@
   transform: skew(45deg);
   display: block;
 }
+
+@media screen and (max-width: 780px) {
+  .section__inner {
+    flex-direction: column;
+  }
+
+  .section__image {
+    max-width: 100%;
+    margin-left: 0;
+    margin-bottom: 4rem;
+    flex-basis: auto;
+  }
+}
