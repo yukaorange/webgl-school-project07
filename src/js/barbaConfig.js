@@ -57,10 +57,10 @@ barba.init({
         tl.to(
           window,
           {
-            duration: 0.5,
+            duration: 0.6,
             scrollTo: 0,
           },
-          "<"
+          "0.8"
         );
 
         return tl;
