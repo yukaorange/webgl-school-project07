@@ -11,6 +11,7 @@
 	},
 	"dependencies": {
 		"@astrojs/image": "^0.17.2",
+		"@barba/core": "^2.9.7",
 		"@fontsource-variable/roboto-mono": "^5.0.6",
 		"@fontsource/kiwi-maru": "^5.0.5",
 		"@fontsource/m-plus-rounded-1c": "^5.0.5",
@@ -27,5 +28,8 @@
 		"sass": "^1.58.1",
 		"three": "^0.149.0",
 		"vite-plugin-glslify": "^2.0.2"
+	},
+	"devDependencies": {
+		"barba.js": "^1.0.0"
 	}
 }

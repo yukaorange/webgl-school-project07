@@ -40,115 +40,125 @@ import Container from "@/layouts/Container.astro";
       </div>
     </Container>
   </Main>
-
-  <script>
-    window.addEventListener("load", () => {
-      slideShowMask(".slideshow--mask .slide");
-    });
-    function slideShowMask(slide) {
-      setInterval(() => {
-        const slides = [...document.querySelectorAll(slide)];
-        const activeSlide = document.querySelector(`${slide}.active`);
-        const beforeSlide = document.querySelector(`${slide}.before`);
-        const activeSlideIndex = [...slides].indexOf(activeSlide);
-        const nextSlideIndex = activeSlideIndex + 1;
-        const nextSlide = slides[nextSlideIndex];
-
-        beforeSlide.classList.remove("before");
-        activeSlide.classList.remove("active");
-
-        if (nextSlide) {
-          activeSlide.classList.add("before");
-          nextSlide.classList.add("active");
-        } else {
-          activeSlide.classList.add("before");
-          slides[0].classList.add("active");
-        }
-      }, 4000);
-    }
-  </script>
-
-  <style lang="scss">
-    .slideshow.slideshow--mask {
-      width: calc(100% - 4rem);
-      // margin-inline: auto;
-      position: relative;
-      aspect-ratio: 16/9;
-      z-index: -1;
-      inset: 0;
-    }
-    .slideshow__content {
-      position: absolute;
-      bottom: -2rem;
-      right: -4rem;
-      padding-right: 4rem;
-      padding-bottom: 1.6rem;
-      padding-top: 1.6rem;
-      padding-left: 2.4em;
-      border: 1px solid var(--black);
-      z-index: 1000;
-      &::after {
-        content: "";
-        position: absolute;
-        z-index: 1000;
-        inset: 0;
-        backdrop-filter: grayscale(100%);
-      }
-    }
-    .slideshow__text {
-      z-index: 10;
-      font-size: 3.2rem;
-      font-weight: 500;
-      color: var(--white);
-      text-transform: uppercase;
-    }
-
-    .slideshow--mask .slide {
-      aspect-ratio: 16/9;
-    }
-
-    @for $i from 1 through 12 {
-      .slideshow.slideshow--mask .slide#{$i} {
-        position: absolute;
-        z-index: 1;
-        inset: 0;
-        background-repeat: repeat;
-        background-position: center;
-        background-size: cover;
-        mask-image: url("/mask/mask-image.png");
-        mask-position: center 200%;
-        mask-size: 200% 200%;
-        mask-repeat: no-repeat;
-        transition-duration: 4s;
-        transition-property: mask-position;
-        transition-timing-function: var(--easeInOutSine);
-      }
-    }
-
-    @for $i from 1 through 12 {
-      .slideshow.slideshow--mask .slide#{$i}.active {
-        mask-position: center 0%;
-        z-index: 3;
-      }
-    }
-
-    @for $i from 1 through 12 {
-      .slideshow.slideshow--mask .slide#{$i}.before {
-        mask-position: center 0%;
-        z-index: 2;
-      }
-    }
-
-    @for $i from 1 through 12 {
-      @if $i < 10 {
-        .slideshow.slideshow--mask .slide#{$i} {
-          background-image: url("/heritage/heritage0#{$i}.jpg");
-        }
-      } @else {
-        .slideshow.slideshow--mask .slide#{$i} {
-          background-image: url("/heritage/heritage#{$i}.jpg");
-        }
-      }
-    }
-  </style>
 </Layout>
+
+<script>
+  window.addEventListener("load", () => {
+    slideShowMask(".slideshow--mask .slide");
+  });
+  function slideShowMask(slide) {
+    setInterval(() => {
+      const slides = [...document.querySelectorAll(slide)];
+      const activeSlide = document.querySelector(`${slide}.active`);
+      const beforeSlide = document.querySelector(`${slide}.before`);
+      const activeSlideIndex = [...slides].indexOf(activeSlide);
+      const nextSlideIndex = activeSlideIndex + 1;
+      const nextSlide = slides[nextSlideIndex];
+
+      beforeSlide.classList.remove("before");
+      activeSlide.classList.remove("active");
+
+      if (nextSlide) {
+        activeSlide.classList.add("before");
+        nextSlide.classList.add("active");
+      } else {
+        activeSlide.classList.add("before");
+        slides[0].classList.add("active");
+      }
+    }, 4000);
+  }
+</script>
+
+<style lang="scss">
+  .slideshow.slideshow--mask {
+    width: calc(100% - 4rem);
+    // margin-inline: auto;
+    position: relative;
+    aspect-ratio: 16/9;
+    z-index: -1;
+    inset: 0;
+  }
+  @media (max-width: 780px) {
+    .slideshow.slideshow--mask {
+      aspect-ratio: 6/9;
+    }
+  }
+  .slideshow__content {
+    position: absolute;
+    bottom: -2rem;
+    right: -4rem;
+    padding-right: 4rem;
+    padding-bottom: 1.6rem;
+    padding-top: 1.6rem;
+    padding-left: 2.4em;
+    border: 1px solid var(--black);
+    z-index: 1000;
+    &::after {
+      content: "";
+      position: absolute;
+      z-index: 1000;
+      inset: 0;
+      backdrop-filter: grayscale(100%);
+    }
+  }
+  .slideshow__text {
+    z-index: 10;
+    font-size: 3.2rem;
+    font-weight: 500;
+    color: var(--white);
+    text-transform: uppercase;
+  }
+
+  .slideshow--mask .slide {
+    aspect-ratio: 16/9;
+  }
+  @media screen and (max-width: 780px) {
+    .slideshow--mask .slide {
+      aspect-ratio: 6/9;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .slideshow.slideshow--mask .slide#{$i} {
+      position: absolute;
+      z-index: 1;
+      inset: 0;
+      background-repeat: repeat;
+      background-position: center;
+      background-size: cover;
+      mask-image: url("/mask/mask-image.png");
+      mask-position: center 200%;
+      mask-size: 200% 200%;
+      mask-repeat: no-repeat;
+      transition-duration: 4s;
+      transition-property: mask-position;
+      transition-timing-function: var(--easeInOutSine);
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .slideshow.slideshow--mask .slide#{$i}.active {
+      mask-position: center 0%;
+      z-index: 3;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    .slideshow.slideshow--mask .slide#{$i}.before {
+      mask-position: center 0%;
+      z-index: 2;
+    }
+  }
+
+  @for $i from 1 through 12 {
+    @if $i < 10 {
+      .slideshow.slideshow--mask .slide#{$i} {
+        background-image: url("/heritage/heritage0#{$i}.jpg");
+      }
+    } @else {
+      .slideshow.slideshow--mask .slide#{$i} {
+        background-image: url("/heritage/heritage#{$i}.jpg");
+      }
+    }
+  }
+</style>

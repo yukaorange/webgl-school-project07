@@ -428,9 +428,9 @@ export class Sketch {
     }
     this.frame++;
     this.isLower = this.isLowerGPU();
-    if (this.frame % 5 == 0 && this.isLower) {
-      return;
-    }
+    // if (this.frame % 5 == 0 && this.isLower) {
+    //   return;
+    // }
 
     const elapsedTime = this.clock.getElapsedTime();
     this.time = elapsedTime;

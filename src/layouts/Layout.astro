@@ -1,13 +1,15 @@
 ---
 import Header from "../layouts/Header.astro";
 import Footer from "../layouts/Footer.astro";
+import BarbaProvider from "../layouts/BarbaProvider.astro";
 import LocalScripts from "../components/LocalScripts.astro";
 import "@fontsource/kiwi-maru";
 import "@fontsource/m-plus-rounded-1c";
 export interface Props {
   title: string;
+  barba?: boolean;
 }
-const { title } = Astro.props;
+const { title, barba } = Astro.props;
 import "@/styles/style.scss";
 ---
 
@@ -18,9 +20,13 @@ import "@/styles/style.scss";
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="description" />
-    <link rel="icon" href="/favicon.png">
-    <script src="https://kit.fontawesome.com/076c3b3ad5.js" crossorigin="anonymous"></script>
-    <style></style>
+    <link rel="icon" href="/favicon.png" />
+    <script
+      src="https://kit.fontawesome.com/076c3b3ad5.js"
+      crossorigin="anonymous"></script>
+
+    {barba ? <link rel="stylesheet" href="/styles/barba.css" /> : ""}
+
     <title>{title}</title>
   </head>
   <body>
@@ -28,5 +34,6 @@ import "@/styles/style.scss";
     <slot />
     <Footer />
     <LocalScripts />
+    {barba ? <BarbaProvider /> : ""}
   </body>
 </html>

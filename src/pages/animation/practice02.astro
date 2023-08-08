@@ -92,146 +92,144 @@ const images = [
       }
     </ul>
     <div class="spacer"></div>
-    <Main />
-
-    <script>
-      import { ScrollAmountHandler } from "@/js/animation/animation02/ScrollAmountHandler.js";
-      import { TransformHandler } from "@/js/animation/animation02/TransformHandler.js";
-
-      const sliders = [...document.querySelectorAll(".item")];
-      const slideImages = [...document.querySelectorAll(".card")];
-
-      let scrollAmountHandler = [];
-      let transformHandler = [];
-
-      sliders.map((slider, i) => {
-        scrollAmountHandler[i] = new ScrollAmountHandler({
-          targetDom: slider,
-        });
-        transformHandler[i] = new TransformHandler({ target: slideImages[i] });
-      });
-
-      window.addEventListener("scroll", () => {
-        scrollAmountHandler.forEach((handler, i) => {
-          handler.update();
-          let scrollRatio = handler.getScrollRatio();
-          transformHandler[i].updateProgress(scrollRatio);
-        });
-      });
-
-      window.addEventListener("resize", () => {
-        scrollAmountHandler.forEach((handler, i) => {
-          handler.update();
-          transformHandler[i].update();
-        });
-      });
-
-      window.addEventListener("load", () => {
-        scrollAmountHandler.forEach((handler, i) => {
-          handler.update();
-          transformHandler[i].update();
-        });
-      });
-    </script>
-
-    <style lang="scss">
-      .list {
-      }
-      .item {
-        visibility: visible;
-        width: 100%;
-        margin-bottom: calc(-100vh + 4.16667vw);
-        height: calc(200vh - 6.25vw); //6.25 = 100/1600
-        &:last-of-type {
-          .card {
-            visibility: visible !important;
-          }
-        }
-      }
-      .sticky-container {
-        position: relative;
-        height: 400vh; //後ろで抜けていくのが見えないようにするための余白（数値はテキトーに、大きな値で）
-      }
-
-      .sticky-pinner {
-        position: sticky;
-        top: 0;
-        height: 100vh;
-        display: grid;
-        align-items: center;
-      }
-
-      .card {
-        height: calc(100vh - 8vw);
-        width: calc(100% - 12%);
-        margin-inline: auto;
-        overflow: hidden;
-        display: grid;
-        border: 1px solid var(--black);
-        padding: 2vw;
-        position: relative;
-        z-index: 0;
-        background-color: var(--gray);
-      }
-
-      .card__inner {
-        display: grid;
-        justify-items: center;
-        width: 100%;
-        height: 100%;
-      }
-
-      .card__image {
-        position: relative;
-        width: 30%;
-        min-width: 375px;
-      }
-
-      .card__body {
-        position: absolute;
-        width: 100%;
-        z-index: -1;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .card__textband {
-        position: absolute;
-        z-index: -1;
-        left: 100%;
-        transform: translateY(-50%);
-      }
-
-      .card__text {
-        font-size: 10rem;
-        font-weight: bold;
-        color: var(--white);
-        animation-name: textAnime;
-        animation-duration: 80s;
-        animation-iteration-count: infinite;
-        animation-timing-function: linear;
-        white-space: nowrap;
-      }
-
-      .spacer {
-        height: 400vh;
-      }
-
-      @media (max-width: 768px) {
-        .card__image {
-          width: 70%;
-          min-width: 200px;
-        }
-      }
-
-      @keyframes textAnime {
-        0% {
-          transform: translateX(0%);
-        }
-        100% {
-          transform: translateX(-100%);
-        }
-      }
-    </style>
   </Main>
 </Layout>
+<script>
+  import { ScrollAmountHandler } from "@/js/animation/animation02/ScrollAmountHandler.js";
+  import { TransformHandler } from "@/js/animation/animation02/TransformHandler.js";
+
+  const sliders = [...document.querySelectorAll(".item")];
+  const slideImages = [...document.querySelectorAll(".card")];
+
+  let scrollAmountHandler = [];
+  let transformHandler = [];
+
+  sliders.map((slider, i) => {
+    scrollAmountHandler[i] = new ScrollAmountHandler({
+      targetDom: slider,
+    });
+    transformHandler[i] = new TransformHandler({ target: slideImages[i] });
+  });
+
+  window.addEventListener("scroll", () => {
+    scrollAmountHandler.forEach((handler, i) => {
+      handler.update();
+      let scrollRatio = handler.getScrollRatio();
+      transformHandler[i].updateProgress(scrollRatio);
+    });
+  });
+
+  window.addEventListener("resize", () => {
+    scrollAmountHandler.forEach((handler, i) => {
+      handler.update();
+      transformHandler[i].update();
+    });
+  });
+
+  window.addEventListener("load", () => {
+    scrollAmountHandler.forEach((handler, i) => {
+      handler.update();
+      transformHandler[i].update();
+    });
+  });
+</script>
+
+<style lang="scss">
+  .list {
+  }
+  .item {
+    visibility: visible;
+    width: 100%;
+    margin-bottom: calc(-100vh + 4.16667vw);
+    height: calc(200vh - 6.25vw); //6.25 = 100/1600
+    &:last-of-type {
+      .card {
+        visibility: visible !important;
+      }
+    }
+  }
+  .sticky-container {
+    position: relative;
+    height: 400vh; //後ろで抜けていくのが見えないようにするための余白（数値はテキトーに、大きな値で）
+  }
+
+  .sticky-pinner {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    display: grid;
+    align-items: center;
+  }
+
+  .card {
+    height: calc(100vh - 8vw);
+    width: calc(100% - 12%);
+    margin-inline: auto;
+    overflow: hidden;
+    display: grid;
+    border: 1px solid var(--black);
+    padding: 2vw;
+    position: relative;
+    z-index: 0;
+    background-color: var(--gray);
+  }
+
+  .card__inner {
+    display: grid;
+    justify-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  .card__image {
+    position: relative;
+    width: 30%;
+    min-width: 375px;
+  }
+
+  .card__body {
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .card__textband {
+    position: absolute;
+    z-index: -1;
+    left: 100%;
+    transform: translateY(-50%);
+  }
+
+  .card__text {
+    font-size: 10rem;
+    font-weight: bold;
+    color: var(--white);
+    animation-name: textAnime;
+    animation-duration: 80s;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+    white-space: nowrap;
+  }
+
+  .spacer {
+    height: 400vh;
+  }
+
+  @media (max-width: 768px) {
+    .card__image {
+      width: 70%;
+      min-width: 200px;
+    }
+  }
+
+  @keyframes textAnime {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
