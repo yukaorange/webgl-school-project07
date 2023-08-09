@@ -9,7 +9,7 @@ export interface Props {
   title: string;
   barba?: boolean;
 }
-const { title, barba } = Astro.props;
+const { title = "TKWD", barba = false } = Astro.props;
 import "@/styles/style.scss";
 ---
 
@@ -26,7 +26,6 @@ import "@/styles/style.scss";
       crossorigin="anonymous"></script>
 
     {barba ? <link rel="stylesheet" href="/styles/barba.css" /> : ""}
-
     <title>{title}</title>
   </head>
   <body>

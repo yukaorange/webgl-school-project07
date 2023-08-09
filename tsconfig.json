@@ -3,6 +3,8 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "baseUrl": ".",
+    "allowJs": true,
+    "checkJs": false,
     "paths": {
       "@/components/*": ["src/components/*"],
       "@/projects/*": ["src/projects/*"],
