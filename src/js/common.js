@@ -16,6 +16,11 @@ export function drawerMenu(button, drawerNav, drawerNavButton) {
   drawerButton.addEventListener("click", function () {
     drawerButton.classList.toggle("active");
     nav.classList.toggle("active");
+    if (drawerButton.classList.contains("active")) {
+      drawerButton.querySelector("span").textContent = "close";
+    } else {
+      drawerButton.querySelector("span").textContent = "menu";
+    }
   });
   //各リンククリックでドロワークローズ
   navButton.forEach((el) => {
@@ -26,6 +31,7 @@ export function drawerMenu(button, drawerNav, drawerNavButton) {
       ) {
         drawerButton.classList.remove("active");
         nav.classList.remove("active");
+        drawerButton.querySelector("span").textContent = "menu";
       }
     });
   });
@@ -37,6 +43,7 @@ export function drawerMenu(button, drawerNav, drawerNavButton) {
     ) {
       drawerButton.classList.remove("active");
       nav.classList.remove("active");
+      drawerButton.querySelector("span").textContent = "menu";
     }
   });
 }
