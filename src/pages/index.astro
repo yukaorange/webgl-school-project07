@@ -4,13 +4,15 @@ import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
 import CardWorks from "@/components/CardWorks.astro";
-import animationThumb01 from "@/images/sneakers/sneaker01.jpg";
-import animationThumb02 from "@/images/foodie/foodie08.jpg";
-import animationThumb03 from "@/images/heritage/heritage02.jpg";
-import animationThumb04 from "@/images/foodie/foodie04.jpg";
-import animationThumb05 from "@/images/music/music01.jpg";
-import practiceThumb01 from "@/images/textures/square.jpg";
-import practiceThumb02 from "@/images/girls/girls01.png";
+const animationThumb01 = "/sneakers/sneaker01.jpg";
+const animationThumb02 = "/foodie/foodie08.jpg";
+const animationThumb03 = "/heritage/heritage02.jpg";
+const animationThumb04 = "/foodie/foodie04.jpg";
+const animationThumb05 = "/music/music01.jpg";
+const animationThumb06 = "/art/art01.jpg";
+const animationThumb07 = "/thumbnails/animation07.jpg";
+const practiceThumb01 = "/textures/square.jpg";
+const practiceThumb02 = "/girls/girls01.png";
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -62,6 +64,24 @@ import practiceThumb02 from "@/images/girls/girls01.png";
           description="animation practice"
           thumbnail={animationThumb05}
           url="/animation/practice05"
+        />
+        <CardWorks
+          title="image rotate"
+          description="animation practice"
+          thumbnail={animationThumb06}
+          url="/animation/practice06"
+        />
+        <CardWorks
+          title="image tile"
+          description="animation practice"
+          thumbnail={animationThumb07}
+          url="/animation/practice07"
+        />
+        <CardWorks
+          title="image tile"
+          description="animation practice"
+          thumbnail={animationThumb07}
+          url="/animation/practice08"
         />
       </div>
     </Section>

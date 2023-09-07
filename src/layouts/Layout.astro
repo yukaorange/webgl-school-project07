@@ -8,8 +8,9 @@ import "@fontsource/m-plus-rounded-1c";
 export interface Props {
   title: string;
   barba?: boolean;
+  addtionalClass?: string;
 }
-const { title = "TKWD", barba = false } = Astro.props;
+const { title = "TKWD", barba = false, addtionalClass = false } = Astro.props;
 import "@/styles/style.scss";
 ---
 
@@ -28,7 +29,7 @@ import "@/styles/style.scss";
     {barba ? <link rel="stylesheet" href="/styles/barba.css" /> : ""}
     <title>{title}</title>
   </head>
-  <body>
+  <body class=`${addtionalClass}`>
     <Header />
     <slot />
     <Footer />
@@ -36,3 +37,9 @@ import "@/styles/style.scss";
     {barba ? <BarbaProvider /> : ""}
   </body>
 </html>
+
+<style>
+  body.dark {
+    background-color: var(--dark);
+  }
+</style>

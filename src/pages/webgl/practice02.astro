@@ -3,77 +3,76 @@ import Layout from "@/layouts/Layout.astro";
 import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
-import { Image } from "@astrojs/image/components";
 
-import irust01 from "@/images/girls/girls01.png";
-import irust02 from "@/images/girls/girls02.png";
-import irust03 from "@/images/girls/girls03.png";
-import irust04 from "@/images/girls/girls04.png";
-import irust05 from "@/images/girls/girls05.png";
-import irust06 from "@/images/girls/girls06.png";
-import irust07 from "@/images/girls/girls07.png";
-import irust08 from "@/images/girls/girls08.png";
-import irust09 from "@/images/girls/girls09.png";
-import irust10 from "@/images/girls/girls10.png";
+const irust01 = "/girls/girls01.png";
+const irust02 = "/girls/girls02.png";
+const irust03 = "/girls/girls03.png";
+const irust04 = "/girls/girls04.png";
+const irust05 = "/girls/girls05.png";
+const irust06 = "/girls/girls06.png";
+const irust07 = "/girls/girls07.png";
+const irust08 = "/girls/girls08.png";
+const irust09 = "/girls/girls09.png";
+const irust10 = "/girls/girls10.png";
 
 const irusts = [
   {
     id: 1,
-    image: irust01,
+    src: irust01,
     title: "sample",
     text: "sampletext",
   },
   {
     id: 2,
-    image: irust02,
+    src: irust02,
     title: "sample",
     text: "sampletext",
   },
   {
     id: 3,
-    image: irust03,
+    src: irust03,
     title: "sumple",
     text: "sampletext",
   },
   {
     id: 4,
-    image: irust04,
+    src: irust04,
     title: "Creative",
     text: "sampletext",
   },
   {
     id: 5,
-    image: irust05,
+    src: irust05,
     title: "Creative",
     text: "sampletext",
   },
   {
     id: 6,
-    image: irust06,
+    src: irust06,
     title: "Creative",
     text: "sampletext",
   },
   {
     id: 7,
-    image: irust07,
+    src: irust07,
     title: "Creative",
     text: "sampletext",
   },
   {
     id: 8,
-    image: irust08,
+    src: irust08,
     title: "Creative",
     text: "sampletext",
   },
   {
     id: 9,
-    image: irust09,
+    src: irust09,
     title: "Creative",
     text: "sampletext",
   },
   {
     id: 10,
-    image: irust10,
+    src: irust10,
     title: "Creative",
     text: "sampletext",
   },
@@ -91,9 +90,9 @@ const irusts = [
               <li class="card">
                 <div class="card__inner">
                   <div class="card__thumbnail">
-                    <Image
+                    <img
                       class="card__image"
-                      src={data.image}
+                      src={data.src}
                       width={600}
                       height={400}
                       alt={data.text}
@@ -119,6 +118,7 @@ const irusts = [
 
   const imagesDOM = document.querySelectorAll(".card__image");
   const images = [...imagesDOM];
+  const scrollContent = document.querySelector(".content");
 
   const sketch = new Sketch({
     dom: document.getElementById("container"),
@@ -130,7 +130,10 @@ const irusts = [
     // easing: (t) => 1 - Math.pow(1 - t, 4),//easeOutQuart
     // easing: (t) => 1 - Math.pow(1 - t, 3), //easeOutCubic
     // easing: (t) => Math.sqrt(1 - Math.pow(t - 1, 2)), //easeOutCirc
+  
   });
+
+  console.log(lenis);
 
   function raf(time) {
     lenis.raf(time);

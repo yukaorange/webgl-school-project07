@@ -1,0 +1,150 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Button from "@/components/Button.astro";
+import Section from "@/layouts/Section.astro";
+import Container from "@/layouts/Container.astro";
+import image1 from "@/images/irust/irust13.jpg";
+---
+
+<Layout title="takaoka_webdesigner" addtionalClass="dark">
+  <Main>
+    <section class="section">
+      {
+        Array.from({ length: 20 }).map((_, i) => {
+          return (
+            <div class="row">
+              <div>
+                <i class="fa-solid fa-user" />
+                <i class="fa-solid fa-shield-halved" />
+                <i class="fa-solid fa-hippo" />
+                <i class="fa-solid fa-landmark" />
+                <i class="fa-solid fa-hourglass-start" />
+                <i class="fa-solid fa-crown" />
+                <i class="fa-solid fa-certificate" />
+                <i class="fa-solid fa-wave-square" />
+                <i class="fa-solid fa-volume-high" />
+                <i class="fa-solid fa-truck-droplet" />
+                <i class="fa-solid fa-tarp-droplet" />
+                <i class="fa-solid fa-scissors" />
+                <i class="fa-solid fa-plug-circle-check" />
+                <i class="fa-solid fa-person-biking" />
+                <i class="fa-solid fa-oil-can" />
+                <i class="fa-solid fa-meteor" />
+                <i class="fa-solid fa-hands-clapping" />
+                <i class="fa-solid fa-gavel" />
+                <i class="fa-solid fa-folder-plus" />
+              </div>
+              <div>
+                <i class="fa-solid fa-user" />
+                <i class="fa-solid fa-shield-halved" />
+                <i class="fa-solid fa-hippo" />
+                <i class="fa-solid fa-landmark" />
+                <i class="fa-solid fa-hourglass-start" />
+                <i class="fa-solid fa-crown" />
+                <i class="fa-solid fa-certificate" />
+                <i class="fa-solid fa-wave-square" />
+                <i class="fa-solid fa-volume-high" />
+                <i class="fa-solid fa-truck-droplet" />
+                <i class="fa-solid fa-tarp-droplet" />
+                <i class="fa-solid fa-scissors" />
+                <i class="fa-solid fa-plug-circle-check" />
+                <i class="fa-solid fa-person-biking" />
+                <i class="fa-solid fa-oil-can" />
+                <i class="fa-solid fa-meteor" />
+                <i class="fa-solid fa-hands-clapping" />
+                <i class="fa-solid fa-gavel" />
+                <i class="fa-solid fa-folder-plus" />
+              </div>
+            </div>
+          );
+        })
+      }
+    </section>
+  </Main>
+</Layout>
+
+<style lang="scss">
+  .section {
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+  .section .row {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding: 0px 0;
+    white-space: nowrap;
+    font-size: 6.4rem;
+    transform: rotate(-30deg) translateY(-300%);
+  }
+  .section i {
+    color: rgba(0, 0, 0, 0.5);
+    transition-duration: 0.1s;
+    transition-timing-function: ease-in-out;
+    transition-delay: 0s;
+    padding: 15px 15px;
+    user-select: none;
+
+    &:hover {
+      color: #00ff00;
+      text-shadow: 0 0 120px #00ff00;
+    }
+  }
+  .section .row div {
+    animation: animate 80s linear infinite;
+    animation-delay: -80s;
+  }
+  .section .row div :nth-child(2) {
+    animation: animate2 80s linear infinite;
+    animation-delay: -40s;
+  }
+  @keyframes animate {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  @keyframes animate2 {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-200%);
+    }
+  }
+
+  .section .row:nth-child(even) div {
+    animation: animate3 80s linear infinite;
+    animation-delay: -80s;
+  }
+  .section .row div:nth-child(even) :nth-child(2) {
+    animation: animate4 80s linear infinite;
+    animation-delay: -40s;
+  }
+  
+  @keyframes animate3 {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(100%);
+    }
+  }
+  @keyframes animate4 {
+    0% {
+      transform: translateX(-200%);
+    }
+    100% {
+      transform: translateX(0%);
+    }
+  }
+</style>
+
+<script></script>

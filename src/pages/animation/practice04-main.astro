@@ -3,52 +3,53 @@ import Layout from "@/layouts/Layout.astro";
 import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
-import { Image } from "@astrojs/image/components";
 import Container from "@/layouts/Container.astro";
 
-import image1 from "@/images/foodie/foodie04.jpg";
+const image1 = "/foodie/foodie04.jpg";
 ---
 
 <Layout title="takaoka_webdesigner" barba={true}>
   <Main>
-    <Container>
-      <div class="barba-wrapper" data-barba="wrapper">
-        <div
-          class="barba-container"
-          data-barba="container"
-          data-barba-namespace="main"
-        >
-          <div class="section">
-            <div class="section__inner">
-              <div class="section__image">
-                <Image
-                  src={image1}
-                  alt="foodies"
-                  width={960}
-                  height={1440}
-                  loading="lazy"
-                />
-              </div>
-              <div class="section__body">
-                <p class="section__lead">barba test</p>
-                <p class="section__text">
-                  The quick brown fox jumped over the lazy dogs, enjoying the
-                  warmth of the sun. In a nearby field, farmers worked
-                  diligently, tending to their crops. The village beyond lay
-                  quiet, a picture of serenity and peace. The quick brown fox
-                  jumped over the lazy dogs, enjoying the warmth of the sun.
-                </p>
-                <a
-                  class="section__link"
-                  href="/animation/practice04-sub"
-                  class="">next page</a
-                >
+    
+      <Container>
+        <div class="barba-wrapper" data-barba="wrapper">
+          <div
+            class="barba-container"
+            data-barba="container"
+            data-barba-namespace="main"
+          >
+            <div class="section">
+              <div class="section__inner">
+                <div class="section__image">
+                  <img
+                    src={image1}
+                    alt="foodies"
+                    width={960}
+                    height={1440}
+                    loading="lazy"
+                  />
+                </div>
+                <div class="section__body">
+                  <p class="section__lead">barba test</p>
+                  <p class="section__text">
+                    The quick brown fox jumped over the lazy dogs, enjoying the
+                    warmth of the sun. In a nearby field, farmers worked
+                    diligently, tending to their crops. The village beyond lay
+                    quiet, a picture of serenity and peace. The quick brown fox
+                    jumped over the lazy dogs, enjoying the warmth of the sun.
+                  </p>
+                  <a
+                    class="section__link"
+                    href="/animation/practice04-sub"
+                    class="">next page</a
+                  >
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </Container>
+      </Container>
+    
   </Main>
 </Layout>
 

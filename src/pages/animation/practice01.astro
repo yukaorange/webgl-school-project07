@@ -3,16 +3,15 @@ import Layout from "@/layouts/Layout.astro";
 import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
-import { Image } from "@astrojs/image/components";
 
-import image01 from "@/images/sneakers/sneaker01.jpg";
-import image02 from "@/images/sneakers/sneaker02.jpg";
-import image03 from "@/images/sneakers/sneaker03.jpg";
-import image04 from "@/images/sneakers/sneaker04.jpg";
-import image05 from "@/images/sneakers/sneaker05.jpg";
-import image06 from "@/images/sneakers/sneaker06.jpg";
-import image07 from "@/images/sneakers/sneaker07.jpg";
-import image08 from "@/images/sneakers/sneaker08.jpg";
+const image01 = "/sneakers/sneaker01.jpg";
+const image02 = "/sneakers/sneaker02.jpg";
+const image03 = "/sneakers/sneaker03.jpg";
+const image04 = "/sneakers/sneaker04.jpg";
+const image05 = "/sneakers/sneaker05.jpg";
+const image06 = "/sneakers/sneaker06.jpg";
+const image07 = "/sneakers/sneaker07.jpg";
+const image08 = "/sneakers/sneaker08.jpg";
 
 const images = [
   image01,
@@ -35,7 +34,7 @@ const images = [
           {
             images.map((image, index) => (
               <li class="list__item" data-scroll-slider-item>
-                <Image
+                <img
                   src={image}
                   alt="sneakers"
                   width={1024}
@@ -60,7 +59,7 @@ const images = [
                   class="list__image-container"
                   data-scroll-slider-img-container
                 >
-                  <Image
+                  <img
                     src={image}
                     alt="sneakers"
                     width={1024}
@@ -82,7 +81,7 @@ const images = [
           {
             images.map((image, index) => (
               <li class="list__item" data-scroll-slider-item>
-                <Image
+                <img
                   src={image}
                   alt="sneakers"
                   width={1024}
@@ -107,7 +106,7 @@ const images = [
                   class="list__image-container"
                   data-scroll-slider-img-container
                 >
-                  <Image
+                  <img
                     src={image}
                     alt="sneakers"
                     width={1024}

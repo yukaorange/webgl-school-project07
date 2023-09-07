@@ -1,5 +1,4 @@
 import { defineConfig } from "astro/config";
-import image from "@astrojs/image";
 import { glslify } from 'vite-plugin-glslify';
 
 // https://astro.build/config
@@ -23,6 +22,5 @@ export default defineConfig({
       minify: true,
     },
   },
-  integrations: [image()],
   base: "",
 });

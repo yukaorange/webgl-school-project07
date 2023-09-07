@@ -29,8 +29,6 @@ export class Slideshow {
     this.isChanging = false;
     this.scrollTrigger = null;
     this.timer = null;
-
-    console.log(this.elements);
   }
 
   create() {
@@ -87,16 +85,14 @@ export class Slideshow {
     if (this.isChanging) return;
     this.isChanging = true;
     const targetImage = this.elements.images[targetIndex];
-    this.elements.svg.prepend(targetImage);
+    this.elements.svg.prepend(targetImage);//add target image to the top of sentence(svg)
     targetImage.setAttribute("opacity", 1);
-    // await this.waitForAnimation(16);
     if (this.elements.currentImage) {
       gsap.set(this.elements.rectangles, { x: 0 });
-      // await this.waitForAnimation(16);
       this.elements.currentImage.setAttribute(
         "clip-path",
         `url(#${this.maskId})`
-      );
+      );// setting clip-path to current image
       gsap.fromTo(
         targetImage,
         {
@@ -108,9 +104,10 @@ export class Slideshow {
           duration: 3.2,
           ease: "power4.out",
         }
-      );
+      );// same timing as the clip-path animation
       await Promise.all(
         this.elements.rectangles.map((rectangle, i) => {
+          // const distance = i % 2 === 0 ? this.width + 1 : -1 * (this.width + 1);
           const distance = i % 2 === 0 ? this.width + 1 : -1 * (this.width + 1);
           return gsap
             .to(rectangle, {
@@ -121,9 +118,13 @@ export class Slideshow {
             })
             .then();
         })
-      );
+      );// waiting next process until all animations are finished
+
+      //⇧you can use this tequnique when you want to wait all animations are finished
+      
       this.elements.currentImage.setAttribute("opacity", 0);
       this.elements.currentImage.setAttribute("clip-path", "");
+
     }
     this.isChanging = false;
     this.currentIndex = targetIndex;
@@ -176,7 +177,7 @@ export class Slideshow {
   start() {
     if (!this.isActive) {
       this.isActive = true;
-      this.loop(800);
+      this.loop(600);
     }
   }
 

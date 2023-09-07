@@ -3,57 +3,56 @@ import Layout from "@/layouts/Layout.astro";
 import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
-import { Image } from "@astrojs/image/components";
 
-import image01 from "@/images/foodie/foodie01.jpg";
-import image02 from "@/images/foodie/foodie02.jpg";
-import image03 from "@/images/foodie/foodie03.jpg";
-import image04 from "@/images/foodie/foodie04.jpg";
-import image05 from "@/images/foodie/foodie05.jpg";
-import image06 from "@/images/foodie/foodie06.jpg";
-import image07 from "@/images/foodie/foodie07.jpg";
-import image08 from "@/images/foodie/foodie08.jpg";
-import image09 from "@/images/foodie/foodie09.jpg";
+const image01 = "/foodie/foodie01.jpg";
+const image02 = "/foodie/foodie02.jpg";
+const image03 = "/foodie/foodie03.jpg";
+const image04 = "/foodie/foodie04.jpg";
+const image05 = "/foodie/foodie05.jpg";
+const image06 = "/foodie/foodie06.jpg";
+const image07 = "/foodie/foodie07.jpg";
+const image08 = "/foodie/foodie08.jpg";
+const image09 = "/foodie/foodie09.jpg";
 
 const images = [
   {
-    image: image01,
+    src: image01,
     text: "Because it saw the salad dressing! This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.",
   },
   {
-    image: image02,
+    src: image02,
     text: "Another favorite joke of ours goes like this - Why don't scientists trust atoms? Because they make up everything! Here, we celebrate our love for intellectual wordplay and dry humor.",
   },
   {
-    image: image03,
+    src: image03,
     text: "It's a simple, yet effective pun, blending our love for food with our knack for humor. American humor, much like our culture, is a melting pot of different elements. ",
   },
   {
-    image: image04,
+    src: image04,
     text: "Whether it's over a hot dog at a baseball game, or a cup of coffee in a bustling city café, our jokes are our social glue, our universal language of camaraderie and shared experiences.",
   },
   {
-    image: image05,
+    src: image05,
     text: "To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ",
   },
   {
-    image: image06,
+    src: image06,
     text: "So, next time you come across an American joke, remember, it's more than just a punchline, it's a slice of Americana.",
   },
   {
-    image: image07,
+    src: image07,
     text: "This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.",
   },
   {
-    image: image08,
+    src: image08,
     text: "An impasta! It's a simple, yet effective pun, blending our love for food with our knack for humor. American humor, much like our culture, is a melting pot of different elements.",
   },
   {
-    image: image09,
+    src: image09,
     text: "To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ",
   },
   {
-    image: image06,
+    src: image06,
     text: "So, next time you come across an American joke, remember, it's more than just a punchline, it's a slice of Americana.",
   },
 ];
@@ -70,8 +69,8 @@ const images = [
                 <div class="card">
                   <div class="card__inner">
                     <div class="card__image">
-                      <Image
-                        src={image.image}
+                      <img
+                        src={image.src}
                         alt="foodies"
                         width={960}
                         height={1440}
