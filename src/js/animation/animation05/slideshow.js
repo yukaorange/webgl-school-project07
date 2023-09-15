@@ -106,6 +106,7 @@ export class Slideshow {
         }
       );// same timing as the clip-path animation
       await Promise.all(
+        //gsap is using requestAnimationFrame, caz animation is running in parallel.
         this.elements.rectangles.map((rectangle, i) => {
           // const distance = i % 2 === 0 ? this.width + 1 : -1 * (this.width + 1);
           const distance = i % 2 === 0 ? this.width + 1 : -1 * (this.width + 1);

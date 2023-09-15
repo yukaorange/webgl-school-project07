@@ -1,18 +1,30 @@
 {
-  // "extends": "astro/tsconfigs/base",
+  "extends": "astro/tsconfigs/base",
   "compilerOptions": {
     "noImplicitAny": false,
+    "noEmitOnError": false,
     "baseUrl": ".",
     "allowJs": true,
     "checkJs": false,
     "paths": {
-      "@/components/*": ["src/components/*"],
-      "@/projects/*": ["src/projects/*"],
-      "@/layouts/*": ["src/layouts/*"],
-      "@/images/*": ["src/images/*"],
-      "@/js/*": ["src/js/*"],
-      "@/styles/*": ["src/styles/*"],
+      "@/components/*": [
+        "src/components/*"
+      ],
+      "@/projects/*": [
+        "src/projects/*"
+      ],
+      "@/layouts/*": [
+        "src/layouts/*"
+      ],
+      "@/images/*": [
+        "src/images/*"
+      ],
+      "@/js/*": [
+        "src/js/*"
+      ],
+      "@/styles/*": [
+        "src/styles/*"
+      ],
     },
-    
   }
 }

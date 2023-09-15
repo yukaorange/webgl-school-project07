@@ -26,6 +26,7 @@
 		"postcss-preset-env": "^9.1.0",
 		"sass": "^1.58.1",
 		"three": "^0.149.0",
+		"typescript": "^5.2.2",
 		"vite-plugin-glslify": "^2.0.2"
 	},
 	"devDependencies": {

@@ -1,0 +1,48 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Main from "@/layouts/Main.astro";
+import Button from "@/components/Button.astro";
+import Section from "@/layouts/Section.astro";
+import Container from "@/layouts/Container.astro";
+
+const image01 = "/music/music05.jpg";
+const image02 = "/music/music02.jpg";
+const image03 = "/music/music06.jpg";
+
+const images = [image01, image02, image03];
+---
+
+<Layout title="takaoka_webdesigner">
+  <Main>
+    <Section heading="checking sticky's behavior">
+      <div class="sticky-container">
+        <ul class="slide__list">
+          {
+            images.map((image, index) => {
+              return (
+                <li class="slide__item" style={`z-index:${-index}`}>
+                  <img src={image} alt=""/>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </div>
+    </Section>
+  </Main>
+</Layout>
+
+<style lang="scss">
+  .sticky-container {
+    position: relative;
+  }
+  .slide__list {
+  }
+  .slide__item {
+    position: sticky;
+    bottom: 0;
+    height: 100vh;
+  }
+</style>
+
+<script></script>

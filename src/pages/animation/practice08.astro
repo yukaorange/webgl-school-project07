@@ -4,14 +4,445 @@ import Main from "@/layouts/Main.astro";
 import Button from "@/components/Button.astro";
 import Section from "@/layouts/Section.astro";
 import Container from "@/layouts/Container.astro";
+
+const image01 = "/music/music05.jpg";
+const image02 = "/music/music02.jpg";
+const image03 = "/music/music06.jpg";
+
+const images = [image01, image02, image03];
 ---
 
 <Layout title="takaoka_webdesigner">
   <Main>
-    <p class="text">お腹減った</p>
+    <Section heading="totally from scratch">
+      <div class="slider" id="slider">
+        <div class="slider__container">
+          <ul class="slider__list slider__list--main">
+            {
+              images.map((image, index) => {
+                if (index == 0) {
+                  return (
+                    <li class="slider__item js-slider__item is-show is-open">
+                      <button>
+                        <img src={image} alt="" />
+                      </button>
+                    </li>
+                  );
+                }
+                return (
+                  <li class="slider__item js-slider__item">
+                    <button>
+                      <img src={image} alt="" />
+                    </button>
+                  </li>
+                );
+              })
+            }
+          </ul>
+          <div class="slider__control">
+            <button class="slider__button slider__button--prev" id="slider-prev"
+            ></button>
+            <button class="slider__button slider__button--next" id="slider-next"
+            ></button>
+          </div>
+        </div>
+        <ul class="slider__list slider__list--thumb">
+          {
+            images.map((image, index) => {
+              if (index == 0) {
+                return (
+                  <li class="slider__item">
+                    <button class="js-slider__thumb is-active">
+                      <img src={image} alt="" />
+                    </button>
+                  </li>
+                );
+              } else {
+                return (
+                  <li class="slider__item">
+                    <button class="js-slider__thumb">
+                      <img src={image} alt="" />
+                    </button>
+                  </li>
+                );
+              }
+            })
+          }
+        </ul>
+      </div>
+      <div class="modal" id="modal">
+        <div class="modal__bg"></div>
+        <div class="modal__content">
+          <div class="gallery" id="gallery">
+            <ul class="gallery__list">
+              {
+                images.map((image, index) => {
+                  if (index === 0) {
+                    return (
+                      <li class="gallery__item js-gallery__item is-show is-open">
+                        <span>
+                          <img src={image} alt="" />
+                        </span>
+                      </li>
+                    );
+                  } else {
+                    return (
+                      <li class="gallery__item js-gallery__item">
+                        <span>
+                          <img src={image} alt="" />
+                        </span>
+                      </li>
+                    );
+                  }
+                })
+              }
+            </ul>
+            <div class="gallery__control">
+              <button
+                class="gallery__button gallery__button--prev"
+                id="gallery-prev"></button>
+              <button
+                class="gallery__button gallery__button--next"
+                id="gallery-next"></button>
+            </div>
+          </div>
+          <button class="modal__close" id="modal-close"></button>
+        </div>
+      </div>
+    </Section>
   </Main>
 </Layout>
 
-<style lang="scss"></style>
+<style lang="scss">
+  button {
+    cursor: pointer;
+  }
+  .slider {
+    max-width: 80rem;
+    margin-inline: auto;
+  }
+  .slider__container {
+    position: relative;
+    z-index: 0;
+  }
+  .slider__list--main {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4/3;
+  }
+  .slider__list--main .slider__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+    button {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  .slider__list--main .slider__item.is-open {
+    display: block;
+  }
+  .slider__list--main .slider__item.is-show {
+    opacity: 1;
+  }
 
-<script></script>
+  .slider__list.slider__list--thumb {
+    margin-top: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .slider__list--thumb .slider__item button {
+    position: relative;
+  }
+  .slider__list--thumb .slider__item button.is-active {
+    &::before {
+      content: "";
+      z-index: 0;
+      position: absolute;
+      inset: 0;
+      background-color: var(--black);
+      opacity: 0.5;
+    }
+  }
+
+  .slider__control {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    inset: 0;
+  }
+
+  .slider__button {
+    pointer-events: auto;
+    position: absolute;
+    top: 50%;
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background-color: var(--white);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .slider__button.is-show {
+    opacity: 1;
+  }
+
+  .slider__button--prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20%;
+      height: 20%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      border-top: 1px solid var(--black);
+      border-left: 1px solid var(--black);
+    }
+  }
+  .slider__button--next {
+    right: 0;
+    transform: translate(50%, -50%);
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20%;
+      height: 20%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(135deg);
+      border-top: 1px solid var(--black);
+      border-left: 1px solid var(--black);
+    }
+  }
+
+  .modal {
+    pointer-events: none;
+    opacity: 0;
+    position: fixed;
+    inset: 0;
+    display: none;
+    justify-items: center;
+    align-items: center;
+    transition: opacity 0.2s ease-in-out;
+  }
+  .modal.is-show {
+    pointer-events: auto;
+    // cursor: pointer;
+    opacity: 1;
+  }
+  .modal.is-open {
+    display: grid;
+  }
+  .modal__bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 0;
+  }
+  .modal__content {
+    position: relative;
+    z-index: 1;
+    width: 80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .modal__close {
+    width: 4rem;
+    aspect-ratio: 1/1;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: var(--white);
+    border-radius: 50%;
+    &::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      background-color: var(--black);
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 2px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      background-color: var(--black);
+    }
+  }
+
+  .gallery {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .gallery__list {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+  }
+
+  .gallery__item {
+    position: absolute;
+    display: none;
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+    transition-timing-function: ease-in-out;
+  }
+  .gallery__item.is-open {
+    display: block;
+  }
+  .gallery__item.is-show {
+    opacity: 1;
+  }
+
+  .gallery__control {
+    position: absolute;
+    inset: 0;
+  }
+  .gallery__button {
+    position: absolute;
+    top: 50%;
+    width: 3rem;
+    aspect-ratio: 1/1;
+    background-color: var(--white);
+    border-radius: 50%;
+    opacity: 0.5;
+  }
+  .gallery__button.is-show {
+    opacity: 1;
+  }
+  .gallery__button--prev {
+    left: 0;
+    transform: translate(-50%, -50%);
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20%;
+      height: 20%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(-45deg);
+      border-top: 1px solid var(--black);
+      border-left: 1px solid var(--black);
+    }
+  }
+  .gallery__button--next {
+    right: 0;
+    transform: translate(50%, -50%);
+    &::after {
+      content: "";
+      position: absolute;
+      width: 20%;
+      height: 20%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(135deg);
+      border-top: 1px solid var(--black);
+      border-left: 1px solid var(--black);
+    }
+  }
+</style>
+
+<script>
+  import { Slider } from "@/js/animation/animation08/Slider.js";
+  import { Gallery } from "@/js/animation/animation08/Gallery.js";
+  import { Modal } from "@/js/animation/animation08/Modal.js";
+
+  let slider, modal, gallery;
+
+  //必要なメソッドは各クラスに定義し、呼び出しの流れはここで設計する。
+  //各インスタンスから受け取った通知に対するアクションはここで定義する。
+  //各インスタンス固有のメソッドは、各クラス内で定義する。
+  //（例えば、モーダルのボタンのクリック通知に対して、スライダーのスライドを実行するというような処理は、ここで定義することになる。）
+  //イベントの通知はwindowまで届ける。そして、windowから各クラスに実行を命令する。そのために、各クラスのメソッドはインスタンス生成時に渡す。
+  //このルールを統一することで、各クラスの独立性を保つことができる。
+  //【最後にもう一度】
+  //大切なのは、親子間オブジェクトの連動であり、同列のオブジェクトは連動させないこと。イベントの通知はwindowまで届ける。そして、windowから各クラスに実行を命令する。そのために、各クラスのメソッドはインスタンス生成時に渡す。拡張性を捨てるなら、各クラスのメソッドは、各クラス内で定義しても良い。ただし、その場合は、各クラスの独立性を保つことができないので注意すること。
+
+  let currentSliderId = 0;
+  const total = document.querySelectorAll(".js-slider__thumb").length - 1; //0,1,2...と数えるために-1する。
+
+  function init() {
+    slider = new Slider({
+      selector: document.querySelector(".slider"),
+      openModal: () => {
+        openModal();
+      },
+      onChange: (selected_id, type) => {
+        changeSlider(selected_id, type);
+      },
+    });
+    modal = new Modal({
+      selector: document.querySelector(".modal"),
+      closeModal: () => {
+        closeModal();
+      },
+    });
+    gallery = new Gallery({
+      selector: document.querySelector(".gallery"),
+      onChange: (dir, type) => {
+        changeSlider(dir, type);
+      },
+    });
+    console.log(slider, modal, gallery);
+  }
+
+  function openModal() {
+    modal.open();
+  }
+  function closeModal() {
+    modal.close();
+  }
+  function changeSlider(value, type) {
+    let prev, next;
+    prev = currentSliderId;
+    switch (type) {
+      case "button":
+        currentSliderId += value;
+        if (currentSliderId < 0) {
+          currentSliderId = 0;
+        } else if (currentSliderId > total) {
+          currentSliderId = total;
+        }
+        break;
+      case "thumb":
+        currentSliderId = value;
+        break;
+    }
+    next = currentSliderId;
+    if (prev !== next) {
+      slider.change(prev, next, total);
+      gallery.change(prev, next, total);
+    }
+  }
+
+  window.addEventListener("load", init);
+</script>
