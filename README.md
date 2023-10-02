@@ -1,4 +1,7 @@
 # created in astro / using raw webgl api
+
+starting with
+
 ```
 npm i 
 npm run dev
