@@ -1,17 +1,21 @@
-<div id="container">
-  <div id="slider" data-images='["","",""]' data-displacement=""></div>
-</div>
+<canvas id="webgl-canvas"></canvas>
 
 <style lang="scss">
-  #container {
+  #webgl-canvas {
     $this: &;
     position: fixed;
     top: 0;
     left: 0;
-    z-index: 100;
+    z-index: 0;
     width: 100%;
     height: 100%;
     user-select: none;
-    // pointer-events: none;
   }
 </style>
+
+<script>
+import { init } from '../js/webgl/main';
+window.addEventListener('load', () => {
+  init();
+});
+</script>
