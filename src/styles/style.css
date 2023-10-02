@@ -9,7 +9,7 @@ html {
   word-break: normal;
   -moz-tab-size: 4;
   -o-tab-size: 4;
-  tab-size: 4;
+     tab-size: 4;
 }
 
 *,
@@ -31,8 +31,8 @@ html {
 }
 
 /* # =================================================================
-	 # General elements
-	 # ================================================================= */
+		 # General elements
+		 # ================================================================= */
 hr {
   overflow: visible; /* Show the overflow in Edge and IE */
   height: 0; /* Add the correct box sizing in Firefox */
@@ -61,7 +61,7 @@ abbr[title] {
   /* Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari */
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-  text-decoration: underline dotted;
+          text-decoration: underline dotted;
 }
 
 a {
@@ -116,23 +116,23 @@ iframe {
 }
 
 /* # =================================================================
-	 # Forms
-	 # ================================================================= */
+		 # Forms
+		 # ================================================================= */
 input {
   border-radius: 0;
 }
 
-[type='number']::-webkit-inner-spin-button,
-[type='number']::-webkit-outer-spin-button {
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
   height: auto; /* Correct the cursor style of increment and decrement buttons in Chrome */
 }
 
-[type='search'] {
+[type=search] {
   -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */
   outline-offset: -2px; /* Correct the outline style in Safari */
 }
 
-[type='search']::-webkit-search-decoration {
+[type=search]::-webkit-search-decoration {
   -webkit-appearance: none; /* Remove the inner padding in Chrome and Safari on macOS */
 }
 
@@ -164,34 +164,34 @@ select {
 
 /* Apply cursor pointer to button elements */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'],
-[role='button'] {
+[type=button],
+[type=reset],
+[type=submit],
+[role=button] {
   cursor: pointer;
 }
 
 /* Remove inner padding and border in Firefox 4+ */
 button::-moz-focus-inner,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
 /* Replace focus style removed in the border reset above */
 button:-moz-focusring,
-[type='button']::-moz-focus-inner,
-[type='reset']::-moz-focus-inner,
-[type='submit']::-moz-focus-inner {
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
   outline: 1px dotted ButtonText;
 }
 
 button,
-html [type='button'],
-[type='reset'],
-[type='submit'] {
+html [type=button],
+[type=reset],
+[type=submit] {
   -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */
 }
 
@@ -248,8 +248,8 @@ legend {
 }
 
 /* # =================================================================
-	 # Specify media element style
-	 # ================================================================= */
+		 # Specify media element style
+		 # ================================================================= */
 img {
   border-style: none; /* Remove border when inside `a` element in IE 8/9/10 */
 }
@@ -260,10 +260,10 @@ progress {
 }
 
 /* # =================================================================
-	 # Accessibility
-	 # ================================================================= */
+		 # Accessibility
+		 # ================================================================= */
 /* Specify the progress cursor of updating elements */
-[aria-busy='true'] {
+[aria-busy=true] {
   cursor: progress;
 }
 
@@ -273,85 +273,153 @@ progress {
 }
 
 /* Specify the unstyled cursor of disabled, not-editable, or otherwise inoperable elements */
-[aria-disabled='true'] {
+[aria-disabled=true] {
   cursor: default;
 }
 
+:root {
+  --vw: 136.6;
+  --max-width: min(calc(1920px * 0.9), calc(100% - 4rem));
+  --note-width: 1024px;
+  --tab-width: 768px;
+  --mobile-width: 360px;
+  --black: #333333;
+  --dark: #2e2e2e;
+  --white: #ffffff;
+  --gray: #808080;
+  --lightgray: #d3d3d3;
+  --lightgray2: #f5f5f5;
+  --lightgray3: #f8f8f8;
+  --lightgray4: #fafafa;
+  --lightgray5: #fcfcfc;
+  --lightgray6: #f9f9f9;
+  --lightgray7: #f4f4f4;
+}
+@media (max-width: 768px) {
+  :root {
+    --vw: 36;
+  }
+}
+
+html {
+  font-size: calc(100vw / var(--vw));
+}
+
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: "Roboto Mono Variable", sans-serif;
+  color: var(--black);
+  line-height: 1.5;
+  letter-spacing: 0.01em;
   margin: 0;
   overflow-x: hidden;
 }
-
-p {
-  font-size: clamp(13px, 0.1988071571vw + 12.2842942346px, 15px);
-  line-height: 1.5;
-  letter-spacing: 0.118em;
-  color: #323232;
+body ._kiwi {
+  font-family: "Kiwi Maru", sans-serif;
 }
-
-a {
-  font-size: clamp(13px, 0.1988071571vw + 12.2842942346px, 15px);
-  line-height: 1.5;
-  letter-spacing: 0.118em;
-  text-decoration: none;
-  color: #323232;
-}
-a:hover {
-  cursor: pointer;
+body ._roboto {
+  font-family: "Roboto Mono Variable", sans-serif;
 }
 
 h1 {
-  font-size: clamp(48px, 4.1749502982vw + 32.9701789264px, 90px);
-  line-height: 1.2;
-  letter-spacing: 0.2em;
-  color: #323232;
+  font-size: 3.2rem;
+  font-weight: 700;
 }
 
 h2 {
-  font-size: clamp(32px, 0.7952286282vw + 29.1371769384px, 40px);
-  line-height: 1.2;
-  letter-spacing: 0.172em;
-  color: #323232;
+  font-size: 2.4rem;
+  font-weight: 500;
 }
 
 h3 {
-  font-size: clamp(18px, 0.5964214712vw + 15.8528827038px, 24px);
-  line-height: 1.2;
-  letter-spacing: 0.172em;
-  color: #323232;
+  font-size: 1.8rem;
+  font-weight: 400;
 }
 
+h4 {
+  font-size: 1.6rem;
+}
+
+h5 {
+  font-size: 1.4rem;
+}
+
+p {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+a {
+  font-size: 1.6rem;
+  font-weight: 400;
+  text-decoration: none;
+  color: var(--black);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a:hover {
+    color: var(--gray);
+  }
+}
 li {
   list-style: none;
+  font-size: 1.6rem;
 }
 
-br._sp {
-  display: none;
+button {
+  color: var(--black);
 }
-@media screen and (max-width: 599px) {
-  br._sp {
-    display: inline;
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+  }
+  h2 {
+    font-size: 1.8rem;
+  }
+  h3 {
+    font-size: 1.6rem;
+  }
+  h4 {
+    font-size: 1.4rem;
+  }
+  h5 {
+    font-size: 1.2rem;
+  }
+  h6 {
+    font-size: 1rem;
+  }
+  p {
+    font-size: 1.4rem;
+  }
+  a {
+    font-size: 1.4rem;
   }
 }
-br._pc {
-  display: inline;
-}
-@media screen and (max-width: 599px) {
-  br._pc {
-    display: none;
-  }
-}
-
-span._no-wrap {
-  white-space: nowrap;
-}
-
 img {
   width: 100%;
   height: 100%;
   vertical-align: bottom;
   -o-object-fit: cover;
-  object-fit: cover;
+     object-fit: cover;
 }
 /*# sourceMappingURL=style.css.map */

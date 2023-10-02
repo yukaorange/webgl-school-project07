@@ -1,6 +1,6 @@
 ---
-import LocalScripts from '../components/LocalScripts.astro'
-import BarbaProvider from '../layouts/BarbaProvider.astro'
+import CommonScripts from '../components/CommonScripts.astro'
+
 import Footer from '../layouts/Footer.astro'
 import Header from '../layouts/Header.astro'
 import '@fontsource/kiwi-maru'
@@ -31,8 +31,8 @@ import '@/styles/style.scss'
     <Header />
     <slot />
     <Footer />
-    <LocalScripts />
-    {barba ? <BarbaProvider /> : ''}
+    <CommonScripts />
+    
   </body>
 </html>
 

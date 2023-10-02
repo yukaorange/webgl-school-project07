@@ -5,20 +5,15 @@
 <style lang="scss">
   .drawer-button {
     position: fixed;
-    top: 7px;
-    right: 10px;
+    top: 1.6rem;
+    right: 2rem;
     z-index: 1000;
-    display: none;
+    display: block;
     padding: 0.8rem 1.2rem 0.5rem;
     border: 1px solid var(--black);
-    span {
-      display: block;
-      text-transform: uppercase;
-    }
   }
-  @media screen and (max-width: 1024px) {
-    .drawer-button {
-      display: block;
-    }
+  .drawer-button span {
+    display: block;
+    text-transform: uppercase;
   }
 </style>
