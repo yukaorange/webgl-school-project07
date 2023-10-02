@@ -1,3 +1,3 @@
-import * as common from "./common";
+import { DrawerMenu } from './common';
 
-common.drawerMenu("#drawer-button", "#drawer-nav", "#drawer-nav a");
+new DrawerMenu("#drawer-button", "#drawer-nav", "#drawer-nav a");

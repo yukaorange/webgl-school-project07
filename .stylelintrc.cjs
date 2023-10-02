@@ -10,10 +10,10 @@ module.exports = {
   ],
   extends: ["stylelint-config-recess-order"],
   rules: {
-    "prettier/prettier": true,
+    "prettier/prettier": null,
     "plugin/declaration-block-no-ignored-properties": true,
     "plugin/no-unsupported-browser-features": [
-      true,
+      null,
       {
         severity: "warning",
       },
