@@ -1,9 +1,10 @@
-# My astro base @2023/10
+# created in astro / using raw webgl api
 ```
 npm i 
+npm run dev
 ```
 
-## 🧞 packages
+## packages
 
 representative packages
 
