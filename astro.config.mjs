@@ -1,16 +1,9 @@
 import { defineConfig } from "astro/config";
-import { glslify } from 'vite-plugin-glslify';
+import { glslify } from "vite-plugin-glslify";
 
 // https://astro.build/config
 export default defineConfig({
   vite: {
-    // css: {
-    //   preprocessorOptions: {
-    //     scss: {
-    //       additionalData: `@import "src/styles/style.scss";`,
-    //     },
-    //   },
-    // },
     plugins: [glslify()],
     build: {
       rollupOptions: {
@@ -18,7 +11,6 @@ export default defineConfig({
           entryFileNames: "js/index.js",
         },
       },
-      // minify: false,
       minify: true,
     },
   },

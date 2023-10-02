@@ -1,8 +1,8 @@
 import { gsap } from "gsap";
-import { HorizontalSlider } from "./HorizontalSlider";
 import { FadeOutSlider } from "./FadeOutSlider";
-import { HorizontalSliderEase } from "./HorizontalSliderEase";
 import { FadeOutSliderEase } from "./FadeOutSliderEase";
+import { HorizontalSlider } from "./HorizontalSlider";
+import { HorizontalSliderEase } from "./HorizontalSliderEase";
 /**
  * ２種類のスライダーを設定する
  */

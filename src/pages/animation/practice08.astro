@@ -1,15 +1,15 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
-import Container from "@/layouts/Container.astro";
+import Button from '@/components/Button.astro'
+import Container from '@/layouts/Container.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 
-const image01 = "/music/music05.jpg";
-const image02 = "/music/music02.jpg";
-const image03 = "/music/music06.jpg";
+const image01 = '/music/music05.jpg'
+const image02 = '/music/music02.jpg'
+const image03 = '/music/music06.jpg'
 
-const images = [image01, image02, image03];
+const images = [image01, image02, image03]
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -27,7 +27,7 @@ const images = [image01, image02, image03];
                         <img src={image} alt="" />
                       </button>
                     </li>
-                  );
+                  )
                 }
                 return (
                   <li class="slider__item js-slider__item">
@@ -35,15 +35,13 @@ const images = [image01, image02, image03];
                       <img src={image} alt="" />
                     </button>
                   </li>
-                );
+                )
               })
             }
           </ul>
           <div class="slider__control">
-            <button class="slider__button slider__button--prev" id="slider-prev"
-            ></button>
-            <button class="slider__button slider__button--next" id="slider-next"
-            ></button>
+            <button class="slider__button slider__button--prev" id="slider-prev"></button>
+            <button class="slider__button slider__button--next" id="slider-next"></button>
           </div>
         </div>
         <ul class="slider__list slider__list--thumb">
@@ -56,7 +54,7 @@ const images = [image01, image02, image03];
                       <img src={image} alt="" />
                     </button>
                   </li>
-                );
+                )
               } else {
                 return (
                   <li class="slider__item">
@@ -64,7 +62,7 @@ const images = [image01, image02, image03];
                       <img src={image} alt="" />
                     </button>
                   </li>
-                );
+                )
               }
             })
           }
@@ -84,7 +82,7 @@ const images = [image01, image02, image03];
                           <img src={image} alt="" />
                         </span>
                       </li>
-                    );
+                    )
                   } else {
                     return (
                       <li class="gallery__item js-gallery__item">
@@ -92,18 +90,14 @@ const images = [image01, image02, image03];
                           <img src={image} alt="" />
                         </span>
                       </li>
-                    );
+                    )
                   }
                 })
               }
             </ul>
             <div class="gallery__control">
-              <button
-                class="gallery__button gallery__button--prev"
-                id="gallery-prev"></button>
-              <button
-                class="gallery__button gallery__button--next"
-                id="gallery-next"></button>
+              <button class="gallery__button gallery__button--prev" id="gallery-prev"></button>
+              <button class="gallery__button gallery__button--next" id="gallery-next"></button>
             </div>
           </div>
           <button class="modal__close" id="modal-close"></button>
@@ -134,13 +128,13 @@ const images = [image01, image02, image03];
     position: absolute;
     top: 0;
     left: 0;
+    display: none;
     width: 100%;
     height: 100%;
-    display: none;
     opacity: 0;
-    transition-property: opacity;
-    transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+    transition-property: opacity;
     button {
       display: block;
       width: 100%;
@@ -155,9 +149,9 @@ const images = [image01, image02, image03];
   }
 
   .slider__list.slider__list--thumb {
-    margin-top: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    margin-top: 1rem;
   }
 
   .slider__list--thumb .slider__item button {
@@ -165,10 +159,10 @@ const images = [image01, image02, image03];
   }
   .slider__list--thumb .slider__item button.is-active {
     &::before {
-      content: "";
-      z-index: 0;
       position: absolute;
       inset: 0;
+      z-index: 0;
+      content: '';
       background-color: var(--black);
       opacity: 0.5;
     }
@@ -176,17 +170,17 @@ const images = [image01, image02, image03];
 
   .slider__control {
     position: absolute;
+    inset: 0;
     z-index: 1;
     pointer-events: none;
-    inset: 0;
   }
 
   .slider__button {
-    pointer-events: auto;
     position: absolute;
     top: 50%;
     width: 3rem;
     aspect-ratio: 1/1;
+    pointer-events: auto;
     background-color: var(--white);
     border-radius: 50%;
     opacity: 0.5;
@@ -199,41 +193,41 @@ const images = [image01, image02, image03];
     left: 0;
     transform: translate(-50%, -50%);
     &::after {
-      content: "";
       position: absolute;
-      width: 20%;
-      height: 20%;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 20%;
+      height: 20%;
+      content: '';
       border-top: 1px solid var(--black);
       border-left: 1px solid var(--black);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
   .slider__button--next {
     right: 0;
     transform: translate(50%, -50%);
     &::after {
-      content: "";
       position: absolute;
-      width: 20%;
-      height: 20%;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(135deg);
+      width: 20%;
+      height: 20%;
+      content: '';
       border-top: 1px solid var(--black);
       border-left: 1px solid var(--black);
+      transform: translate(-50%, -50%) rotate(135deg);
     }
   }
 
   .modal {
-    pointer-events: none;
-    opacity: 0;
     position: fixed;
     inset: 0;
     display: none;
-    justify-items: center;
     align-items: center;
+    justify-items: center;
+    pointer-events: none;
+    opacity: 0;
     transition: opacity 0.2s ease-in-out;
   }
   .modal.is-show {
@@ -248,73 +242,73 @@ const images = [image01, image02, image03];
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.9);
-    z-index: 0;
   }
   .modal__content {
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 80%;
     height: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
   .modal__close {
-    width: 4rem;
-    aspect-ratio: 1/1;
     position: absolute;
-    z-index: 1;
     top: 0;
     right: 0;
+    z-index: 1;
+    width: 4rem;
+    aspect-ratio: 1/1;
     background-color: var(--white);
     border-radius: 50%;
     &::after {
-      content: "";
       position: absolute;
-      width: 50%;
-      height: 2px;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(45deg);
+      width: 50%;
+      height: 2px;
+      content: '';
       background-color: var(--black);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
     &::before {
-      content: "";
       position: absolute;
-      width: 50%;
-      height: 2px;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 50%;
+      height: 2px;
+      content: '';
       background-color: var(--black);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
 
   .gallery {
-    width: 100%;
-    height: 100%;
     display: grid;
     place-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .gallery__list {
     position: relative;
-    width: 100%;
-    height: 100%;
     display: grid;
     place-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .gallery__item {
     position: absolute;
     display: none;
     opacity: 0;
-    transition-property: opacity;
-    transition-duration: 0.2s;
     transition-timing-function: ease-in-out;
+    transition-duration: 0.2s;
+    transition-property: opacity;
   }
   .gallery__item.is-open {
     display: block;
@@ -343,40 +337,40 @@ const images = [image01, image02, image03];
     left: 0;
     transform: translate(-50%, -50%);
     &::after {
-      content: "";
       position: absolute;
-      width: 20%;
-      height: 20%;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(-45deg);
+      width: 20%;
+      height: 20%;
+      content: '';
       border-top: 1px solid var(--black);
       border-left: 1px solid var(--black);
+      transform: translate(-50%, -50%) rotate(-45deg);
     }
   }
   .gallery__button--next {
     right: 0;
     transform: translate(50%, -50%);
     &::after {
-      content: "";
       position: absolute;
-      width: 20%;
-      height: 20%;
       top: 50%;
       left: 50%;
-      transform: translate(-50%, -50%) rotate(135deg);
+      width: 20%;
+      height: 20%;
+      content: '';
       border-top: 1px solid var(--black);
       border-left: 1px solid var(--black);
+      transform: translate(-50%, -50%) rotate(135deg);
     }
   }
 </style>
 
 <script>
-  import { Slider } from "@/js/animation/animation08/Slider.js";
-  import { Gallery } from "@/js/animation/animation08/Gallery.js";
-  import { Modal } from "@/js/animation/animation08/Modal.js";
+  import { Gallery } from '@/js/animation/animation08/Gallery.js'
+  import { Modal } from '@/js/animation/animation08/Modal.js'
+  import { Slider } from '@/js/animation/animation08/Slider.js'
 
-  let slider, modal, gallery;
+  let slider, modal, gallery
 
   //必要なメソッドは各クラスに定義し、呼び出しの流れはここで設計する。
   //各インスタンスから受け取った通知に対するアクションはここで定義する。
@@ -387,62 +381,62 @@ const images = [image01, image02, image03];
   //【最後にもう一度】
   //大切なのは、親子間オブジェクトの連動であり、同列のオブジェクトは連動させないこと。イベントの通知はwindowまで届ける。そして、windowから各クラスに実行を命令する。そのために、各クラスのメソッドはインスタンス生成時に渡す。拡張性を捨てるなら、各クラスのメソッドは、各クラス内で定義しても良い。ただし、その場合は、各クラスの独立性を保つことができないので注意すること。
 
-  let currentSliderId = 0;
-  const total = document.querySelectorAll(".js-slider__thumb").length - 1; //0,1,2...と数えるために-1する。
+  let currentSliderId = 0
+  const total = document.querySelectorAll('.js-slider__thumb').length - 1 //0,1,2...と数えるために-1する。
 
   function init() {
     slider = new Slider({
-      selector: document.querySelector(".slider"),
+      selector: document.querySelector('.slider'),
       openModal: () => {
-        openModal();
+        openModal()
       },
       onChange: (selected_id, type) => {
-        changeSlider(selected_id, type);
+        changeSlider(selected_id, type)
       },
-    });
+    })
     modal = new Modal({
-      selector: document.querySelector(".modal"),
+      selector: document.querySelector('.modal'),
       closeModal: () => {
-        closeModal();
+        closeModal()
       },
-    });
+    })
     gallery = new Gallery({
-      selector: document.querySelector(".gallery"),
+      selector: document.querySelector('.gallery'),
       onChange: (dir, type) => {
-        changeSlider(dir, type);
+        changeSlider(dir, type)
       },
-    });
-    console.log(slider, modal, gallery);
+    })
+    console.log(slider, modal, gallery)
   }
 
   function openModal() {
-    modal.open();
+    modal.open()
   }
   function closeModal() {
-    modal.close();
+    modal.close()
   }
   function changeSlider(value, type) {
-    let prev, next;
-    prev = currentSliderId;
+    let prev, next
+    prev = currentSliderId
     switch (type) {
-      case "button":
-        currentSliderId += value;
+      case 'button':
+        currentSliderId += value
         if (currentSliderId < 0) {
-          currentSliderId = 0;
+          currentSliderId = 0
         } else if (currentSliderId > total) {
-          currentSliderId = total;
+          currentSliderId = total
         }
-        break;
-      case "thumb":
-        currentSliderId = value;
-        break;
+        break
+      case 'thumb':
+        currentSliderId = value
+        break
     }
-    next = currentSliderId;
+    next = currentSliderId
     if (prev !== next) {
-      slider.change(prev, next, total);
-      gallery.change(prev, next, total);
+      slider.change(prev, next, total)
+      gallery.change(prev, next, total)
     }
   }
 
-  window.addEventListener("load", init);
+  window.addEventListener('load', init)
 </script>

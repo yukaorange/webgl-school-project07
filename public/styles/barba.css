@@ -58,7 +58,7 @@
 }
 
 .section__link::after {
-  content: "";
+  content: '';
   position: absolute;
   left: calc(100% + 4px);
   width: 4rem;

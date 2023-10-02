@@ -1,23 +1,23 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
+import Button from '@/components/Button.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 
-const image01 = "/foodie/foodie01.jpg";
-const image02 = "/foodie/foodie02.jpg";
-const image03 = "/foodie/foodie03.jpg";
-const image04 = "/foodie/foodie04.jpg";
-const image05 = "/foodie/foodie05.jpg";
-const image06 = "/foodie/foodie06.jpg";
-const image07 = "/foodie/foodie07.jpg";
-const image08 = "/foodie/foodie08.jpg";
-const image09 = "/foodie/foodie09.jpg";
+const image01 = '/foodie/foodie01.jpg'
+const image02 = '/foodie/foodie02.jpg'
+const image03 = '/foodie/foodie03.jpg'
+const image04 = '/foodie/foodie04.jpg'
+const image05 = '/foodie/foodie05.jpg'
+const image06 = '/foodie/foodie06.jpg'
+const image07 = '/foodie/foodie07.jpg'
+const image08 = '/foodie/foodie08.jpg'
+const image09 = '/foodie/foodie09.jpg'
 
 const images = [
   {
     src: image01,
-    text: "Because it saw the salad dressing! This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.",
+    text: 'Because it saw the salad dressing! This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.',
   },
   {
     src: image02,
@@ -33,7 +33,7 @@ const images = [
   },
   {
     src: image05,
-    text: "To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ",
+    text: 'To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ',
   },
   {
     src: image06,
@@ -41,7 +41,7 @@ const images = [
   },
   {
     src: image07,
-    text: "This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.",
+    text: 'This is a classic American joke, typical of our love for puns and play on words. You see, we Americans, we cherish our humor as much as we cherish our freedom.',
   },
   {
     src: image08,
@@ -49,13 +49,13 @@ const images = [
   },
   {
     src: image09,
-    text: "To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ",
+    text: 'To sum it up, American jokes are a reflection of our diverse culture and values - a blend of simplicity, wit, and a dash of silliness. ',
   },
   {
     src: image06,
     text: "So, next time you come across an American joke, remember, it's more than just a punchline, it's a slice of Americana.",
   },
-];
+]
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -69,13 +69,7 @@ const images = [
                 <div class="card">
                   <div class="card__inner">
                     <div class="card__image">
-                      <img
-                        src={image.src}
-                        alt="foodies"
-                        width={960}
-                        height={1440}
-                        loading="lazy"
-                      />
+                      <img src={image.src} alt="foodies" width={960} height={1440} loading="lazy" />
                     </div>
                     <div class="card__body">
                       <div class="card__textband">
@@ -94,53 +88,53 @@ const images = [
   </Main>
 </Layout>
 <script>
-  import { ScrollAmountHandler } from "@/js/animation/animation02/ScrollAmountHandler.js";
-  import { TransformHandler } from "@/js/animation/animation02/TransformHandler.js";
+  import { ScrollAmountHandler } from '@/js/animation/animation02/ScrollAmountHandler.js'
+  import { TransformHandler } from '@/js/animation/animation02/TransformHandler.js'
 
-  const sliders = [...document.querySelectorAll(".item")];
-  const slideImages = [...document.querySelectorAll(".card")];
+  const sliders = [...document.querySelectorAll('.item')]
+  const slideImages = [...document.querySelectorAll('.card')]
 
-  let scrollAmountHandler = [];
-  let transformHandler = [];
+  let scrollAmountHandler = []
+  let transformHandler = []
 
   sliders.map((slider, i) => {
     scrollAmountHandler[i] = new ScrollAmountHandler({
       targetDom: slider,
-    });
-    transformHandler[i] = new TransformHandler({ target: slideImages[i] });
-  });
+    })
+    transformHandler[i] = new TransformHandler({ target: slideImages[i] })
+  })
 
-  window.addEventListener("scroll", () => {
+  window.addEventListener('scroll', () => {
     scrollAmountHandler.forEach((handler, i) => {
-      handler.update();
-      let scrollRatio = handler.getScrollRatio();
-      transformHandler[i].updateProgress(scrollRatio);
-    });
-  });
+      handler.update()
+      let scrollRatio = handler.getScrollRatio()
+      transformHandler[i].updateProgress(scrollRatio)
+    })
+  })
 
-  window.addEventListener("resize", () => {
+  window.addEventListener('resize', () => {
     scrollAmountHandler.forEach((handler, i) => {
-      handler.update();
-      transformHandler[i].update();
-    });
-  });
+      handler.update()
+      transformHandler[i].update()
+    })
+  })
 
-  window.addEventListener("load", () => {
+  window.addEventListener('load', () => {
     scrollAmountHandler.forEach((handler, i) => {
-      handler.update();
-      transformHandler[i].update();
-    });
-  });
+      handler.update()
+      transformHandler[i].update()
+    })
+  })
 </script>
 
 <style lang="scss">
   .list {
   }
   .item {
-    visibility: visible;
     width: 100%;
-    margin-bottom: calc(-100vh + 4.16667vw);
     height: calc(200vh - 6.25vw); //6.25 = 100/1600
+    margin-bottom: calc(-100vh + 4.16667vw);
+    visibility: visible;
     &:last-of-type {
       .card {
         visibility: visible !important;
@@ -155,22 +149,22 @@ const images = [
   .sticky-pinner {
     position: sticky;
     top: 0;
-    height: 100vh;
     display: grid;
     align-items: center;
+    height: 100vh;
   }
 
   .card {
-    height: calc(100vh - 8vw);
-    width: calc(100% - 12%);
-    margin-inline: auto;
-    overflow: hidden;
-    display: grid;
-    border: 1px solid var(--black);
-    padding: 2vw;
     position: relative;
     z-index: 0;
+    display: grid;
+    width: calc(100% - 12%);
+    height: calc(100vh - 8vw);
+    padding: 2vw;
+    margin-inline: auto;
+    overflow: hidden;
     background-color: var(--gray);
+    border: 1px solid var(--black);
   }
 
   .card__inner {
@@ -188,16 +182,16 @@ const images = [
 
   .card__body {
     position: absolute;
-    width: 100%;
-    z-index: -1;
     top: 50%;
+    z-index: -1;
+    width: 100%;
     transform: translateY(-50%);
   }
 
   .card__textband {
     position: absolute;
-    z-index: -1;
     left: 100%;
+    z-index: -1;
     transform: translateY(-50%);
   }
 
@@ -205,11 +199,11 @@ const images = [
     font-size: 10rem;
     font-weight: bold;
     color: var(--white);
+    white-space: nowrap;
     animation-name: textAnime;
     animation-duration: 80s;
-    animation-iteration-count: infinite;
     animation-timing-function: linear;
-    white-space: nowrap;
+    animation-iteration-count: infinite;
   }
 
   .spacer {

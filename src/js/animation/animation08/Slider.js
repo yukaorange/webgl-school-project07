@@ -57,7 +57,7 @@ export class Slider {
       this.thumbList[i] = new SliderThumb({
         selector: thumbList[i],
         id: i,
-        onClick: (thumb_id) => {
+        onClick: thumb_id => {
           this.onChange(thumb_id, "thumb");
         },
       });

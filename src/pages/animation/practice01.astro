@@ -1,28 +1,19 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
+import Button from '@/components/Button.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 
-const image01 = "/sneakers/sneaker01.jpg";
-const image02 = "/sneakers/sneaker02.jpg";
-const image03 = "/sneakers/sneaker03.jpg";
-const image04 = "/sneakers/sneaker04.jpg";
-const image05 = "/sneakers/sneaker05.jpg";
-const image06 = "/sneakers/sneaker06.jpg";
-const image07 = "/sneakers/sneaker07.jpg";
-const image08 = "/sneakers/sneaker08.jpg";
+const image01 = '/sneakers/sneaker01.jpg'
+const image02 = '/sneakers/sneaker02.jpg'
+const image03 = '/sneakers/sneaker03.jpg'
+const image04 = '/sneakers/sneaker04.jpg'
+const image05 = '/sneakers/sneaker05.jpg'
+const image06 = '/sneakers/sneaker06.jpg'
+const image07 = '/sneakers/sneaker07.jpg'
+const image08 = '/sneakers/sneaker08.jpg'
 
-const images = [
-  image01,
-  image02,
-  image03,
-  image04,
-  image05,
-  image06,
-  image07,
-  image08,
-];
+const images = [image01, image02, image03, image04, image05, image06, image07, image08]
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -34,13 +25,7 @@ const images = [
           {
             images.map((image, index) => (
               <li class="list__item" data-scroll-slider-item>
-                <img
-                  src={image}
-                  alt="sneakers"
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                />
+                <img src={image} alt="sneakers" width={1024} height={768} loading="lazy" />
               </li>
             ))
           }
@@ -55,17 +40,8 @@ const images = [
           {
             images.map((image, index) => (
               <li class="list__item" data-scroll-slider-item>
-                <span
-                  class="list__image-container"
-                  data-scroll-slider-img-container
-                >
-                  <img
-                    src={image}
-                    alt="sneakers"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                  />
+                <span class="list__image-container" data-scroll-slider-img-container>
+                  <img src={image} alt="sneakers" width={1024} height={768} loading="lazy" />
                 </span>
               </li>
             ))
@@ -81,13 +57,7 @@ const images = [
           {
             images.map((image, index) => (
               <li class="list__item" data-scroll-slider-item>
-                <img
-                  src={image}
-                  alt="sneakers"
-                  width={1024}
-                  height={768}
-                  loading="lazy"
-                />
+                <img src={image} alt="sneakers" width={1024} height={768} loading="lazy" />
               </li>
             ))
           }
@@ -102,17 +72,8 @@ const images = [
           {
             images.map((image, index) => (
               <li class="list__item" data-scroll-slider-item>
-                <span
-                  class="list__image-container"
-                  data-scroll-slider-img-container
-                >
-                  <img
-                    src={image}
-                    alt="sneakers"
-                    width={1024}
-                    height={768}
-                    loading="lazy"
-                  />
+                <span class="list__image-container" data-scroll-slider-img-container>
+                  <img src={image} alt="sneakers" width={1024} height={768} loading="lazy" />
                 </span>
               </li>
             ))
@@ -122,16 +83,15 @@ const images = [
       </div>
     </div>
     <div class="spacer"></div>
-    
   </Main>
 </Layout>
 
 <script>
-  import { init } from "@/js/animation/animation01/index";
+  import { init } from '@/js/animation/animation01/index'
 
-  window.addEventListener("DOMContentLoaded", () => {
-    init();
-  });
+  window.addEventListener('DOMContentLoaded', () => {
+    init()
+  })
 </script>
 
 <style lang="scss">
@@ -140,17 +100,17 @@ const images = [
     border: 1px solid var(--gray);
   }
   .scroll-container {
-    height: 100vh;
-    overflow: hidden;
     position: sticky;
     top: 0;
     left: 0;
+    height: 100vh;
+    overflow: hidden;
   }
 
   .scroll-container__text {
     position: absolute;
-    bottom: 0;
     right: 0;
+    bottom: 0;
     padding: 2.4rem;
     text-transform: uppercase;
   }
@@ -167,10 +127,10 @@ const images = [
   }
 
   .list__image-container {
+    position: relative;
+    display: block;
     // width: 100%;
     height: 100%;
-    display: block;
-    position: relative;
   }
 
   .spacer {

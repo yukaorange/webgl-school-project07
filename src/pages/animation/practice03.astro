@@ -1,9 +1,9 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
-import Container from "@/layouts/Container.astro";
+import Button from '@/components/Button.astro'
+import Container from '@/layouts/Container.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 
 // import image1 from "@/images/military/military01.jpg";
 // import image2 from "@/images/military/military02.jpg";
@@ -44,40 +44,40 @@ import Container from "@/layouts/Container.astro";
 </Layout>
 
 <script>
-  window.addEventListener("load", () => {
-    slideShowMask(".slideshow--mask .slide");
-  });
+  window.addEventListener('load', () => {
+    slideShowMask('.slideshow--mask .slide')
+  })
   function slideShowMask(slide) {
     setInterval(() => {
-      const slides = [...document.querySelectorAll(slide)];
-      const activeSlide = document.querySelector(`${slide}.active`);
-      const beforeSlide = document.querySelector(`${slide}.before`);
-      const activeSlideIndex = [...slides].indexOf(activeSlide);
-      const nextSlideIndex = activeSlideIndex + 1;
-      const nextSlide = slides[nextSlideIndex];
+      const slides = [...document.querySelectorAll(slide)]
+      const activeSlide = document.querySelector(`${slide}.active`)
+      const beforeSlide = document.querySelector(`${slide}.before`)
+      const activeSlideIndex = [...slides].indexOf(activeSlide)
+      const nextSlideIndex = activeSlideIndex + 1
+      const nextSlide = slides[nextSlideIndex]
 
-      beforeSlide.classList.remove("before");
-      activeSlide.classList.remove("active");
+      beforeSlide.classList.remove('before')
+      activeSlide.classList.remove('active')
 
       if (nextSlide) {
-        activeSlide.classList.add("before");
-        nextSlide.classList.add("active");
+        activeSlide.classList.add('before')
+        nextSlide.classList.add('active')
       } else {
-        activeSlide.classList.add("before");
-        slides[0].classList.add("active");
+        activeSlide.classList.add('before')
+        slides[0].classList.add('active')
       }
-    }, 4000);
+    }, 4000)
   }
 </script>
 
 <style lang="scss">
   .slideshow.slideshow--mask {
-    width: calc(100% - 4rem);
     // margin-inline: auto;
     position: relative;
-    aspect-ratio: 16/9;
-    z-index: -1;
     inset: 0;
+    z-index: -1;
+    width: calc(100% - 4rem);
+    aspect-ratio: 16/9;
   }
   @media (max-width: 780px) {
     .slideshow.slideshow--mask {
@@ -86,19 +86,19 @@ import Container from "@/layouts/Container.astro";
   }
   .slideshow__content {
     position: absolute;
-    bottom: -2rem;
     right: -4rem;
+    bottom: -2rem;
+    z-index: 1000;
+    padding-top: 1.6rem;
     padding-right: 4rem;
     padding-bottom: 1.6rem;
-    padding-top: 1.6rem;
     padding-left: 2.4em;
     border: 1px solid var(--black);
-    z-index: 1000;
     &::after {
-      content: "";
       position: absolute;
-      z-index: 1000;
       inset: 0;
+      z-index: 1000;
+      content: '';
       backdrop-filter: grayscale(100%);
     }
   }
@@ -122,18 +122,18 @@ import Container from "@/layouts/Container.astro";
   @for $i from 1 through 12 {
     .slideshow.slideshow--mask .slide#{$i} {
       position: absolute;
-      z-index: 1;
       inset: 0;
+      z-index: 1;
       background-repeat: repeat;
       background-position: center;
       background-size: cover;
-      mask-image: url("/mask/mask-image.png");
+      transition-timing-function: var(--easeInOutSine);
+      transition-duration: 4s;
+      transition-property: mask-position;
+      mask-image: url('/mask/mask-image.png');
       mask-position: center 200%;
       mask-size: 200% 200%;
       mask-repeat: no-repeat;
-      transition-duration: 4s;
-      transition-property: mask-position;
-      transition-timing-function: var(--easeInOutSine);
     }
   }
 
@@ -154,11 +154,11 @@ import Container from "@/layouts/Container.astro";
   @for $i from 1 through 12 {
     @if $i < 10 {
       .slideshow.slideshow--mask .slide#{$i} {
-        background-image: url("/heritage/heritage0#{$i}.jpg");
+        background-image: url('/heritage/heritage0#{$i}.jpg');
       }
     } @else {
       .slideshow.slideshow--mask .slide#{$i} {
-        background-image: url("/heritage/heritage#{$i}.jpg");
+        background-image: url('/heritage/heritage#{$i}.jpg');
       }
     }
   }

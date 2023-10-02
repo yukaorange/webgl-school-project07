@@ -74,7 +74,7 @@ export class Slideshow {
   }
 
   waitForAnimation(duration) {
-    return new Promise((resolve) => {
+    return new Promise(resolve => {
       setTimeout(() => {
         resolve();
       }, duration);
@@ -85,14 +85,14 @@ export class Slideshow {
     if (this.isChanging) return;
     this.isChanging = true;
     const targetImage = this.elements.images[targetIndex];
-    this.elements.svg.prepend(targetImage);//add target image to the top of sentence(svg)
+    this.elements.svg.prepend(targetImage); //add target image to the top of sentence(svg)
     targetImage.setAttribute("opacity", 1);
     if (this.elements.currentImage) {
       gsap.set(this.elements.rectangles, { x: 0 });
       this.elements.currentImage.setAttribute(
         "clip-path",
         `url(#${this.maskId})`
-      );// setting clip-path to current image
+      ); // setting clip-path to current image
       gsap.fromTo(
         targetImage,
         {
@@ -104,7 +104,7 @@ export class Slideshow {
           duration: 3.2,
           ease: "power4.out",
         }
-      );// same timing as the clip-path animation
+      ); // same timing as the clip-path animation
       await Promise.all(
         //gsap is using requestAnimationFrame, caz animation is running in parallel.
         this.elements.rectangles.map((rectangle, i) => {
@@ -119,13 +119,12 @@ export class Slideshow {
             })
             .then();
         })
-      );// waiting next process until all animations are finished
+      ); // waiting next process until all animations are finished
 
       //⇧you can use this tequnique when you want to wait all animations are finished
-      
+
       this.elements.currentImage.setAttribute("opacity", 0);
       this.elements.currentImage.setAttribute("clip-path", "");
-
     }
     this.isChanging = false;
     this.currentIndex = targetIndex;

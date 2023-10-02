@@ -1,20 +1,20 @@
 ---
-import Header from "../layouts/Header.astro";
-import Footer from "../layouts/Footer.astro";
-import BarbaProvider from "../layouts/BarbaProvider.astro";
-import LocalScripts from "../components/LocalScripts.astro";
-import "@fontsource/kiwi-maru";
-import "@fontsource/m-plus-rounded-1c";
+import LocalScripts from '../components/LocalScripts.astro'
+import BarbaProvider from '../layouts/BarbaProvider.astro'
+import Footer from '../layouts/Footer.astro'
+import Header from '../layouts/Header.astro'
+import '@fontsource/kiwi-maru'
+import '@fontsource/m-plus-rounded-1c'
 export interface Props {
-  title: string;
-  barba?: boolean;
-  addtionalClass?: string;
+  title: string
+  barba?: boolean
+  addtionalClass?: string
 }
-const { title = "TKWD", barba = false, addtionalClass = false } = Astro.props;
-import "@/styles/style.scss";
+const { title = 'TKWD', barba = false, addtionalClass = false } = Astro.props
+import '@/styles/style.scss'
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
@@ -22,11 +22,9 @@ import "@/styles/style.scss";
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="description" />
     <link rel="icon" href="/favicon.png" />
-    <script
-      src="https://kit.fontawesome.com/076c3b3ad5.js"
-      crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/076c3b3ad5.js" crossorigin="anonymous"></script>
 
-    {barba ? <link rel="stylesheet" href="/styles/barba.css" /> : ""}
+    {barba ? <link rel="stylesheet" href="/styles/barba.css" /> : ''}
     <title>{title}</title>
   </head>
   <body class=`${addtionalClass}`>
@@ -34,7 +32,7 @@ import "@/styles/style.scss";
     <slot />
     <Footer />
     <LocalScripts />
-    {barba ? <BarbaProvider /> : ""}
+    {barba ? <BarbaProvider /> : ''}
   </body>
 </html>
 

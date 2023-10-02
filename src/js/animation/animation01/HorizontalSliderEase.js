@@ -182,7 +182,7 @@ export class HorizontalSliderEase {
   // スライダー内のアイテムの最大高さを取得するメソッド
   getMaxHeight() {
     let maxHeight = 0;
-    this.items.forEach((item) => {
+    this.items.forEach(item => {
       const itemElement = item.properties.element;
       if (itemElement) {
         const rectangle = itemElement.getBoundingClientRect();

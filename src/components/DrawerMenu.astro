@@ -1,4 +1,5 @@
 ---
+
 ---
 
 <nav class="drawer-nav" id="drawer-nav">
@@ -6,16 +7,12 @@
     <ul class="drawer-nav__list">
       <li>
         <span class="drawer-nav__item-wrap">
-          <a href="https://twitter.com/home?lang=ja"
-            ><i class="fa-brands fa-twitter"></i>(X)</a
-          >
+          <a href="https://twitter.com/home?lang=ja"><i class="fa-brands fa-twitter"></i>(X)</a>
         </span>
       </li>
       <li>
         <span class="drawer-nav__item-wrap">
-          <a href="https://github.com/yukaorange/portfolio02"
-            ><i class="fa-brands fa-github"></i></a
-          >
+          <a href="https://github.com/yukaorange/portfolio02"><i class="fa-brands fa-github"></i></a>
         </span>
       </li>
     </ul>
@@ -23,10 +20,10 @@
 </nav>
 <style lang="scss">
   .drawer-nav {
-    display: none;
     position: fixed;
-    z-index: 10;
     inset: 0;
+    z-index: 10;
+    display: none;
     justify-items: center;
     background-color: var(--lightgray);
   }
@@ -35,17 +32,17 @@
   }
   .drawer-nav__inner {
     display: grid;
-    justify-items: center;
     align-items: center;
+    justify-items: center;
   }
   .drawer-nav__list {
     display: flex;
     gap: 8rem;
     li {
       a {
+        position: relative;
         display: block;
         font-size: 3rem;
-        position: relative;
       }
     }
   }
@@ -60,8 +57,8 @@
     a {
       animation-name: slideIn;
       animation-duration: 0.5s;
-      animation-delay: 0.2s;
       animation-timing-function: ease-in-out;
+      animation-delay: 0.2s;
       animation-fill-mode: forwards;
     }
     @keyframes slideIn {

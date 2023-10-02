@@ -19,7 +19,7 @@ export class FadeOutSlider {
     const sliderElement = this.properties.element;
     sliderElement && (this.currentPositionX = this.totalDistance * progress);
     this.updateTranslate(sliderElement);
-    this.sliderItems.forEach((sliderItem) => {
+    this.sliderItems.forEach(sliderItem => {
       sliderItem.scroll(progress);
     });
   }
@@ -70,7 +70,7 @@ export class FadeOutSlider {
   }
 
   render() {
-    this.sliderItems.forEach((sliderItem) => {
+    this.sliderItems.forEach(sliderItem => {
       sliderItem.render(this.scrollProgress);
     });
     requestAnimationFrame(() => {
@@ -127,7 +127,7 @@ export class FadeOutSlider {
 
   getMaxHeight() {
     let maxHeight = 0;
-    this.sliderItems.forEach((sliderItem) => {
+    this.sliderItems.forEach(sliderItem => {
       const sliderItemElement = sliderItem.properties.element;
       if (sliderItemElement) {
         const sliderItemRect = sliderItemElement.getBoundingClientRect();

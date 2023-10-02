@@ -19,7 +19,7 @@ function initHeight(barbaContainer) {
 
 if (barbaContainer) {
   initHeight(barbaContainer);
-  
+
   barba.init({
     transitions: [
       {

@@ -1,10 +1,10 @@
 import { gsap } from "gsap";
-import * as THREE from "three";
-import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
-import vertexShader from "./shader01/vertex.glsl";
-import fragmentShader from "./shader01/fragment.glsl";
 import * as dat from "lil-gui";
+import * as THREE from "three";
 import { TextureLoader } from "three";
+import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
+import fragmentShader from "./shader01/fragment.glsl";
+import vertexShader from "./shader01/vertex.glsl";
 
 export class Sketch {
   /**
@@ -75,7 +75,7 @@ export class Sketch {
    */
   initiate(cb) {
     const promises = this.images.map((image, i) => {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         // loadの第二引数は読み込み完了時に実行されるコールバック関数
         this.textures[i] = new THREE.TextureLoader().load(image.src, resolve);
       });
@@ -142,14 +142,14 @@ export class Sketch {
 
     let scrollY = window.scrollY - this.initialY;
 
-    this.materials.forEach((m) => {
+    this.materials.forEach(m => {
       m.uniforms.uXAspect.value = this.Xaspect / this.imageXAspect;
       m.uniforms.uYAspect.value = this.Yaspect / this.imageYAspect;
       m.uniforms.uResolution.value.x = this.width * 0.9;
       m.uniforms.uResolution.value.y = this.height * 0.9;
     });
 
-    this.imageStore.forEach((i) => {
+    this.imageStore.forEach(i => {
       let bounds = i.img.getBoundingClientRect();
       i.mesh.scale.set(bounds.width, bounds.height, 1);
       i.top = bounds.top + scrollY;
@@ -198,7 +198,7 @@ export class Sketch {
   addLight() {
     const lights = [];
 
-    lights.forEach((light) => {
+    lights.forEach(light => {
       this.scene.add(light);
     });
   }

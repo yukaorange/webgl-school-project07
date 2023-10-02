@@ -1,8 +1,8 @@
 ---
-import DrawerButton from "../components/DrawerButton.astro";
-import { Image } from "@astrojs/image/components";
-import DrawerMenu from "../components/DrawerMenu.astro";
-import Gnav from "../components/Gnav.astro";
+import { Image } from '@astrojs/image/components'
+import DrawerButton from '../components/DrawerButton.astro'
+import DrawerMenu from '../components/DrawerMenu.astro'
+import Gnav from '../components/Gnav.astro'
 ---
 
 <header class="header">
@@ -20,16 +20,16 @@ import Gnav from "../components/Gnav.astro";
 
 <style lang="scss">
   .header {
-    mix-blend-mode: difference;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 10000;
+    width: 100%;
+    mix-blend-mode: difference;
   }
   .header__wrapper {
-    margin-inline: auto;
     max-width: var(--max-width);
+    margin-inline: auto;
   }
   .header__inner {
     padding-top: 2rem;
@@ -38,10 +38,10 @@ import Gnav from "../components/Gnav.astro";
   .header__logo {
     display: block;
     width: fit-content;
-    padding-left: 1.6rem;
-    padding-right: 1.6rem;
     padding-top: 1.6rem;
+    padding-right: 1.6rem;
     padding-bottom: 1.2rem;
+    padding-left: 1.6rem;
     line-height: 1;
     border: 1px solid var(--black);
     h1 {

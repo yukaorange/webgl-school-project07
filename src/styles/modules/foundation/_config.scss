@@ -1,5 +1,5 @@
-@use "../variables/variables";
-@use "../mixin/mixin";
+@use '../variables/variables';
+@use '../mixin/mixin';
 :root {
   --vw: 136.6;
   @media (max-width: 768px) {
@@ -49,15 +49,15 @@ html.lenis {
 }
 
 body {
-  font-family: "Roboto Mono Variable", sans-serif;
+  font-family: 'Roboto Mono Variable', sans-serif;
   color: var(--black);
   line-height: 1.5;
   letter-spacing: 0.01em;
   & ._kiwi {
-    font-family: "Kiwi Maru", sans-serif;
+    font-family: 'Kiwi Maru', sans-serif;
   }
   & ._roboto {
-    font-family: "Roboto Mono Variable", sans-serif;
+    font-family: 'Roboto Mono Variable', sans-serif;
   }
   margin: 0;
   // モーダル展開時など想定
@@ -108,7 +108,7 @@ li {
   font-size: 1.6rem;
 }
 
-button{
+button {
   color: var(--black);
 }
 

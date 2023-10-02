@@ -9,7 +9,7 @@ html {
   word-break: normal;
   -moz-tab-size: 4;
   -o-tab-size: 4;
-     tab-size: 4;
+  tab-size: 4;
 }
 
 *,
@@ -61,7 +61,7 @@ abbr[title] {
   /* Add the correct text decoration in Chrome, Edge, IE, Opera, and Safari */
   text-decoration: underline;
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 a {
@@ -122,17 +122,17 @@ input {
   border-radius: 0;
 }
 
-[type=number]::-webkit-inner-spin-button,
-[type=number]::-webkit-outer-spin-button {
+[type='number']::-webkit-inner-spin-button,
+[type='number']::-webkit-outer-spin-button {
   height: auto; /* Correct the cursor style of increment and decrement buttons in Chrome */
 }
 
-[type=search] {
+[type='search'] {
   -webkit-appearance: textfield; /* Correct the odd appearance in Chrome and Safari */
   outline-offset: -2px; /* Correct the outline style in Safari */
 }
 
-[type=search]::-webkit-search-decoration {
+[type='search']::-webkit-search-decoration {
   -webkit-appearance: none; /* Remove the inner padding in Chrome and Safari on macOS */
 }
 
@@ -164,34 +164,34 @@ select {
 
 /* Apply cursor pointer to button elements */
 button,
-[type=button],
-[type=reset],
-[type=submit],
-[role=button] {
+[type='button'],
+[type='reset'],
+[type='submit'],
+[role='button'] {
   cursor: pointer;
 }
 
 /* Remove inner padding and border in Firefox 4+ */
 button::-moz-focus-inner,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   border-style: none;
   padding: 0;
 }
 
 /* Replace focus style removed in the border reset above */
 button:-moz-focusring,
-[type=button]::-moz-focus-inner,
-[type=reset]::-moz-focus-inner,
-[type=submit]::-moz-focus-inner {
+[type='button']::-moz-focus-inner,
+[type='reset']::-moz-focus-inner,
+[type='submit']::-moz-focus-inner {
   outline: 1px dotted ButtonText;
 }
 
 button,
-html [type=button],
-[type=reset],
-[type=submit] {
+html [type='button'],
+[type='reset'],
+[type='submit'] {
   -webkit-appearance: button; /* Correct the inability to style clickable types in iOS */
 }
 
@@ -263,7 +263,7 @@ progress {
 	 # Accessibility
 	 # ================================================================= */
 /* Specify the progress cursor of updating elements */
-[aria-busy=true] {
+[aria-busy='true'] {
   cursor: progress;
 }
 
@@ -273,7 +273,7 @@ progress {
 }
 
 /* Specify the unstyled cursor of disabled, not-editable, or otherwise inoperable elements */
-[aria-disabled=true] {
+[aria-disabled='true'] {
   cursor: default;
 }
 
@@ -284,14 +284,14 @@ body {
 }
 
 p {
-  font-size: clamp(13px, 0.1988071571vw + 12.2842942346px , 15px);
+  font-size: clamp(13px, 0.1988071571vw + 12.2842942346px, 15px);
   line-height: 1.5;
   letter-spacing: 0.118em;
   color: #323232;
 }
 
 a {
-  font-size: clamp(13px, 0.1988071571vw + 12.2842942346px , 15px);
+  font-size: clamp(13px, 0.1988071571vw + 12.2842942346px, 15px);
   line-height: 1.5;
   letter-spacing: 0.118em;
   text-decoration: none;
@@ -302,21 +302,21 @@ a:hover {
 }
 
 h1 {
-  font-size: clamp(48px, 4.1749502982vw + 32.9701789264px , 90px);
+  font-size: clamp(48px, 4.1749502982vw + 32.9701789264px, 90px);
   line-height: 1.2;
   letter-spacing: 0.2em;
   color: #323232;
 }
 
 h2 {
-  font-size: clamp(32px, 0.7952286282vw + 29.1371769384px , 40px);
+  font-size: clamp(32px, 0.7952286282vw + 29.1371769384px, 40px);
   line-height: 1.2;
   letter-spacing: 0.172em;
   color: #323232;
 }
 
 h3 {
-  font-size: clamp(18px, 0.5964214712vw + 15.8528827038px , 24px);
+  font-size: clamp(18px, 0.5964214712vw + 15.8528827038px, 24px);
   line-height: 1.2;
   letter-spacing: 0.172em;
   color: #323232;
@@ -352,6 +352,6 @@ img {
   height: 100%;
   vertical-align: bottom;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 /*# sourceMappingURL=style.css.map */

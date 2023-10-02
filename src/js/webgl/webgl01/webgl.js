@@ -1,10 +1,10 @@
 import { gsap } from "gsap";
+import * as dat from "lil-gui";
 import * as THREE from "three";
+import { TextureLoader } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls";
 // import vertexShader from "./shader/vertex.glsl";
 // import fragmentShader from "./shader/fragment.glsl";
-import * as dat from "lil-gui";
-import { TextureLoader } from "three";
 
 export class Sketch {
   /**
@@ -43,7 +43,7 @@ export class Sketch {
     this.lastAnimationTime = 0; // 最後にアニメーションが開始された時間
 
     this.initiate(() => {
-      console.log("initiate")
+      console.log("initiate");
       this.setupResize();
       this.addObjects();
       this.addCamera();
@@ -64,7 +64,7 @@ export class Sketch {
    */
   initiate(cb) {
     const promises = this.images.map((url, i) => {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         // loadの第二引数は読み込み完了時に実行されるコールバック関数
         this.textures[i] = new THREE.TextureLoader().load(url, resolve);
       });
@@ -158,7 +158,7 @@ export class Sketch {
     const AmbientLight = new THREE.AmbientLight(0xf8f8f8, 0.5);
     lights.push(AmbientLight);
 
-    lights.forEach((light) => {
+    lights.forEach(light => {
       this.scene.add(light);
     });
   }
@@ -264,7 +264,7 @@ export class Sketch {
   updateGap() {
     if (this.mouseFlg) {
       this.gap = this.initialGap * 1.25; // or any value greater than this.initialGap
-      this.meshArray.forEach((plane) => {
+      this.meshArray.forEach(plane => {
         gsap.to(plane.position, {
           x: `+=${plane.initialPositionX * this.gap}`,
           y: `+=${plane.initialPositionY * this.gap}`,
@@ -275,7 +275,7 @@ export class Sketch {
       });
     } else {
       this.gap = this.initialGap;
-      this.meshArray.forEach((plane) => {
+      this.meshArray.forEach(plane => {
         gsap.to(plane.position, {
           x: plane.initialPositionX,
           y: plane.initialPositionY,
@@ -297,10 +297,10 @@ export class Sketch {
     const elapsedTime = this.clock.getElapsedTime();
     this.time = elapsedTime;
     if (this.mouseFlg == false) {
-      this.meshArray.forEach((mesh) => mesh.tween.play());
+      this.meshArray.forEach(mesh => mesh.tween.play());
     }
     if (this.mouseFlg == true) {
-      this.meshArray.forEach((mesh) => mesh.tween.pause());
+      this.meshArray.forEach(mesh => mesh.tween.pause());
     }
 
     const radius = 15;

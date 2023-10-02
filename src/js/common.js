@@ -23,7 +23,7 @@ export function drawerMenu(button, drawerNav, drawerNavButton) {
     }
   });
   //各リンククリックでドロワークローズ
-  navButton.forEach((el) => {
+  navButton.forEach(el => {
     el.addEventListener("click", () => {
       if (
         drawerButton.classList.contains("active") ||

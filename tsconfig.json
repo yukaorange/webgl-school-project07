@@ -3,28 +3,17 @@
   "compilerOptions": {
     "noImplicitAny": false,
     "noEmitOnError": false,
-    "baseUrl": ".",
+    "noEmit": true,
     "allowJs": true,
     "checkJs": false,
+    "baseUrl": ".",
     "paths": {
-      "@/components/*": [
-        "src/components/*"
-      ],
-      "@/projects/*": [
-        "src/projects/*"
-      ],
-      "@/layouts/*": [
-        "src/layouts/*"
-      ],
-      "@/images/*": [
-        "src/images/*"
-      ],
-      "@/js/*": [
-        "src/js/*"
-      ],
-      "@/styles/*": [
-        "src/styles/*"
-      ],
-    },
+      "@/components/*": ["src/components/*"],
+      "@/projects/*": ["src/projects/*"],
+      "@/layouts/*": ["src/layouts/*"],
+      "@/images/*": ["src/images/*"],
+      "@/js/*": ["src/js/*"],
+      "@/styles/*": ["src/styles/*"]
+    }
   }
 }

@@ -1,9 +1,11 @@
 // ブロック要素で囲む前提で、画像サイズ基本設定
 img {
   width: 100%;
+
   // max-width: 100%;
   height: 100%;
   vertical-align: bottom;
+
   // レスポンシブ対応
   object-fit: cover;
 }

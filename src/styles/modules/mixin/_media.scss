@@ -1,4 +1,4 @@
-@use "../variables/variables";
+@use '../variables/variables';
 
 // 小画面
 @mixin x-small {
@@ -40,7 +40,7 @@
 @mixin touch {
   @media (hover: none) {
     /* hoverが使えないタッチ端末を想定した装飾を記載（&:active使用する） */
-    &:active{
+    &:active {
       @content;
     }
   }
@@ -49,7 +49,7 @@
 @mixin no-touch {
   @media (hover: hover) {
     /* 非タッチ端末を想定した装飾を記載（&:hover使用する） */
-    &:hover{
+    &:hover {
       @content;
     }
   }

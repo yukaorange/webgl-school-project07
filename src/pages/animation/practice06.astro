@@ -1,11 +1,11 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
-import Container from "@/layouts/Container.astro";
+import Button from '@/components/Button.astro'
+import Container from '@/layouts/Container.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 
-const image1 = "/art/art01.jpg";
+const image1 = '/art/art01.jpg'
 ---
 
 <Layout title="takaoka_webdesigner" addtionalClass="dark">
@@ -18,28 +18,16 @@ const image1 = "/art/art01.jpg";
               Array.from({ length: 20 }).map((_, i) => {
                 return (
                   <div class={`rotate-image__image rotate-image--${i}`}>
-                    <img
-                      src={image1}
-                      alt="cyber"
-                      width={1280}
-                      height={720}
-                      loading="lazy"
-                    />
+                    <img src={image1} alt="cyber" width={1280} height={720} loading="lazy" />
                   </div>
-                );
+                )
               })
             }
           </div>
         </div>
         <div class="space-image">
           <!-- this image is exist for keepspace (coz opacity is 0).-->
-          <img
-            src={image1}
-            alt="cyber"
-            width={1280}
-            height={720}
-            loading="lazy"
-          />
+          <img src={image1} alt="cyber" width={1280} height={720} loading="lazy" />
         </div>
       </div>
     </Container>
@@ -47,13 +35,13 @@ const image1 = "/art/art01.jpg";
 </Layout>
 
 <script>
-  const images = document.querySelectorAll(".rotate-image__image");
+  const images = document.querySelectorAll('.rotate-image__image')
   images.forEach((image, i) => {
-    console.log(image, i);
+    console.log(image, i)
     setInterval(() => {
-      image.classList.toggle("rotate");
-    }, 8000);
-  });
+      image.classList.toggle('rotate')
+    }, 8000)
+  })
 </script>
 
 <style lang="scss">
@@ -69,23 +57,23 @@ const image1 = "/art/art01.jpg";
   }
   .space-image {
     max-width: 90rem;
-    margin-inline: auto;
     aspect-ratio: 1/1;
+    margin-inline: auto;
     opacity: 0;
   }
   .rotate-image__image {
-    aspect-ratio: 1/1;
     position: absolute;
+    aspect-ratio: 1/1;
   }
   @for $i from 0 through 20 {
     .rotate-image--#{$i} {
-      transition-delay: #{$i * 0.1}s;
-      transition-duration: 0.5s;
-      transition-timing-function: ease-in-out;
       z-index: -#{$i};
+      transition-delay: #{$i * 0.1}s;
+      transition-timing-function: ease-in-out;
+      transition-duration: 0.5s;
       @if $i != 19 {
         $clip-size: $i * 2.5;
-        clip-path: unquote("circle(#{$clip-size}% at 50% 50%)");
+        clip-path: unquote('circle(#{$clip-size}% at 50% 50%)');
       }
     }
     .rotate-image--#{$i}.rotate {

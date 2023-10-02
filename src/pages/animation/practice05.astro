@@ -1,13 +1,12 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
-import Container from "@/layouts/Container.astro";
-
-import image1 from "@/images/music/music05.jpg";
-import image2 from "@/images/music/music02.jpg";
-import image3 from "@/images/music/music06.jpg";
+import Button from '@/components/Button.astro'
+import image2 from '@/images/music/music02.jpg'
+import image1 from '@/images/music/music05.jpg'
+import image3 from '@/images/music/music06.jpg'
+import Container from '@/layouts/Container.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -17,24 +16,9 @@ import image3 from "@/images/music/music06.jpg";
         <div class="slideshow" data-total-masks="10">
           <svg width="1920" height="1280" viewBox="0 0 1920 1280">
             <clipPath id="slideshow__mask"></clipPath>
-            <image
-              xlink:href={image1.src}
-              width="1920"
-              height="1280"
-              opacity="0"
-            />
-            <image
-              xlink:href={image2.src}
-              width="1920"
-              height="1280"
-              opacity="0"
-            />
-            <image
-              xlink:href={image3.src}
-              width="1920"
-              height="1280"
-              opacity="0"
-            />
+            <image xlink:href={image1.src} width="1920" height="1280" opacity="0" />
+            <image xlink:href={image2.src} width="1920" height="1280" opacity="0" />
+            <image xlink:href={image3.src} width="1920" height="1280" opacity="0" />
           </svg>
         </div>
       </div>
@@ -43,11 +27,11 @@ import image3 from "@/images/music/music06.jpg";
 </Layout>
 
 <script>
-  import { Slideshow } from "@/js/animation/animation05/slideshow.js";
-  const container = document.querySelector(".slideshow");
-  const slideshow = new Slideshow(container);
-  slideshow.create();
-  slideshow.on();
+  import { Slideshow } from '@/js/animation/animation05/slideshow.js'
+  const container = document.querySelector('.slideshow')
+  const slideshow = new Slideshow(container)
+  slideshow.create()
+  slideshow.on()
 </script>
 
 <style lang="scss">

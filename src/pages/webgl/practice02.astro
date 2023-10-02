@@ -1,82 +1,82 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
+import Button from '@/components/Button.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
 
-const irust01 = "/girls/girls01.png";
-const irust02 = "/girls/girls02.png";
-const irust03 = "/girls/girls03.png";
-const irust04 = "/girls/girls04.png";
-const irust05 = "/girls/girls05.png";
-const irust06 = "/girls/girls06.png";
-const irust07 = "/girls/girls07.png";
-const irust08 = "/girls/girls08.png";
-const irust09 = "/girls/girls09.png";
-const irust10 = "/girls/girls10.png";
+const irust01 = '/girls/girls01.png'
+const irust02 = '/girls/girls02.png'
+const irust03 = '/girls/girls03.png'
+const irust04 = '/girls/girls04.png'
+const irust05 = '/girls/girls05.png'
+const irust06 = '/girls/girls06.png'
+const irust07 = '/girls/girls07.png'
+const irust08 = '/girls/girls08.png'
+const irust09 = '/girls/girls09.png'
+const irust10 = '/girls/girls10.png'
 
 const irusts = [
   {
     id: 1,
     src: irust01,
-    title: "sample",
-    text: "sampletext",
+    title: 'sample',
+    text: 'sampletext',
   },
   {
     id: 2,
     src: irust02,
-    title: "sample",
-    text: "sampletext",
+    title: 'sample',
+    text: 'sampletext',
   },
   {
     id: 3,
     src: irust03,
-    title: "sumple",
-    text: "sampletext",
+    title: 'sumple',
+    text: 'sampletext',
   },
   {
     id: 4,
     src: irust04,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
   {
     id: 5,
     src: irust05,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
   {
     id: 6,
     src: irust06,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
   {
     id: 7,
     src: irust07,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
   {
     id: 8,
     src: irust08,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
   {
     id: 9,
     src: irust09,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
   {
     id: 10,
     src: irust10,
-    title: "Creative",
-    text: "sampletext",
+    title: 'Creative',
+    text: 'sampletext',
   },
-];
+]
 ---
 
 <Layout title="takaoka_webdesigner">
@@ -90,13 +90,7 @@ const irusts = [
               <li class="card">
                 <div class="card__inner">
                   <div class="card__thumbnail">
-                    <img
-                      class="card__image"
-                      src={data.src}
-                      width={600}
-                      height={400}
-                      alt={data.text}
-                    />
+                    <img class="card__image" src={data.src} width={600} height={400} alt={data.text} />
                   </div>
                 </div>
                 <div class="card__body">
@@ -104,7 +98,7 @@ const irusts = [
                   <p class="card__text">{data.text}</p>
                 </div>
               </li>
-            );
+            )
           })
         }
       </ul>
@@ -113,47 +107,46 @@ const irusts = [
 </Layout>
 
 <script>
-  import { Sketch } from "@/js/webgl/webgl02/webgl";
-  import Lenis from "@studio-freight/lenis";
+  import Lenis from '@studio-freight/lenis'
+  import { Sketch } from '@/js/webgl/webgl02/webgl'
 
-  const imagesDOM = document.querySelectorAll(".card__image");
-  const images = [...imagesDOM];
-  const scrollContent = document.querySelector(".content");
+  const imagesDOM = document.querySelectorAll('.card__image')
+  const images = [...imagesDOM]
+  const scrollContent = document.querySelector('.content')
 
   const sketch = new Sketch({
-    dom: document.getElementById("container"),
+    dom: document.getElementById('container'),
     images: images,
-  });
+  })
 
   const lenis = new Lenis({
     // smoothTouch: true,
     // easing: (t) => 1 - Math.pow(1 - t, 4),//easeOutQuart
     // easing: (t) => 1 - Math.pow(1 - t, 3), //easeOutCubic
     // easing: (t) => Math.sqrt(1 - Math.pow(t - 1, 2)), //easeOutCirc
-  
-  });
+  })
 
-  console.log(lenis);
+  console.log(lenis)
 
   function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
+    lenis.raf(time)
+    requestAnimationFrame(raf)
   }
 
-  requestAnimationFrame(raf);
+  requestAnimationFrame(raf)
 </script>
 
 <style lang="scss">
   #container {
     position: fixed;
-    z-index: -1;
     inset: 0;
+    z-index: -1;
   }
 
   .content {
-    margin-top: 8rem;
     max-width: var(--max-width);
     margin-inline: auto;
+    margin-top: 8rem;
   }
 
   .cards {

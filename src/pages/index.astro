@@ -1,33 +1,28 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import Main from "@/layouts/Main.astro";
-import Button from "@/components/Button.astro";
-import Section from "@/layouts/Section.astro";
-import CardWorks from "@/components/CardWorks.astro";
-const animationThumb01 = "/sneakers/sneaker01.jpg";
-const animationThumb02 = "/foodie/foodie08.jpg";
-const animationThumb03 = "/heritage/heritage02.jpg";
-const animationThumb04 = "/foodie/foodie04.jpg";
-const animationThumb05 = "/music/music01.jpg";
-const animationThumb06 = "/art/art01.jpg";
-const animationThumb07 = "/thumbnails/animation07.jpg";
-const animationThumb08 = "/music/music03.jpg";
-const animationThumb09 = "/music/music07.jpg";
-const animationThumb10 = "/art/art02.jpg";
-const practiceThumb01 = "/textures/square.jpg";
-const practiceThumb02 = "/girls/girls01.png";
+import Button from '@/components/Button.astro'
+import CardWorks from '@/components/CardWorks.astro'
+import Layout from '@/layouts/Layout.astro'
+import Main from '@/layouts/Main.astro'
+import Section from '@/layouts/Section.astro'
+const animationThumb01 = '/sneakers/sneaker01.jpg'
+const animationThumb02 = '/foodie/foodie08.jpg'
+const animationThumb03 = '/heritage/heritage02.jpg'
+const animationThumb04 = '/foodie/foodie04.jpg'
+const animationThumb05 = '/music/music01.jpg'
+const animationThumb06 = '/art/art01.jpg'
+const animationThumb07 = '/thumbnails/animation07.jpg'
+const animationThumb08 = '/music/music03.jpg'
+const animationThumb09 = '/music/music07.jpg'
+const animationThumb10 = '/art/art02.jpg'
+const practiceThumb01 = '/textures/square.jpg'
+const practiceThumb02 = '/girls/girls01.png'
 ---
 
 <Layout title="takaoka_webdesigner">
   <Main>
     <Section heading="webgl">
       <div class="cards">
-        <CardWorks
-          title="cube"
-          description="webgl practice01"
-          thumbnail={practiceThumb01}
-          url="/webgl/practice01"
-        />
+        <CardWorks title="cube" description="webgl practice01" thumbnail={practiceThumb01} url="/webgl/practice01" />
         <CardWorks
           title="slider lenis"
           description="webgl practice02"

@@ -1,5 +1,5 @@
-@use "../variables/variables";
-@use "./media";
+@use '../variables/variables';
+@use './media';
 
 @function myClamp($min: 0, $max: 0, $minView: variables.$minView, $maxView: variables.$maxView) {
   $a: calc(($max - $min) / ($maxView - $minView));
