@@ -4,7 +4,7 @@ import Layout from '@/layouts/Layout.astro'
 import WebGL from '@/components/WebGL.astro';
 ---
 
-<Layout title="takaoka_webdesigner">
+<Layout title="takaoka_webdesigner" addtionalClass='fixed'>
   <WebGL />
   <div class="scroller">
     <div class="scroller-section scroller-section0"></div>
@@ -15,10 +15,12 @@ import WebGL from '@/components/WebGL.astro';
 </Layout>
 
 <style lang="scss">
-  .secroller{
+  .scroller{
+    position: absolute;
+    top: 0;
     width: 100%;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
     scroll-snap-type: y mandatory;
     scroll-behavior: smooth;
   }

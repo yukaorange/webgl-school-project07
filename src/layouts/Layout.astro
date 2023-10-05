@@ -10,7 +10,7 @@ export interface Props {
   barba?: boolean
   addtionalClass?: string
 }
-const { title = 'TKWD', barba = false, addtionalClass = false } = Astro.props
+const { title = 'TKWD',addtionalClass = false } = Astro.props
 import '@/styles/style.scss'
 ---
 
@@ -23,8 +23,6 @@ import '@/styles/style.scss'
     <meta name="description" content="description" />
     <link rel="icon" href="/favicon.png" />
     <script src="https://kit.fontawesome.com/076c3b3ad5.js" crossorigin="anonymous"></script>
-
-    {barba ? <link rel="stylesheet" href="/styles/barba.css" /> : ''}
     <title>{title}</title>
   </head>
   <body class=`${addtionalClass}`>
@@ -32,12 +30,16 @@ import '@/styles/style.scss'
     <slot />
     <Footer />
     <CommonScripts />
-    
   </body>
 </html>
 
 <style>
   body.dark {
     background-color: var(--dark);
+  }
+  body.fixed{
+    position: fixed;
+    width: 100%;
+    height: 100vh;
   }
 </style>
