@@ -119,7 +119,7 @@ function render() {
 function draw() {
   const elapsedTime = clock.getElapsedTime()
   progress = (() => {
-    let result = 0
+    let result = 1
     result += elapsedTime / 1000
     if (result > 1) {
       result = 1
