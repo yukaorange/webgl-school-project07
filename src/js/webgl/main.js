@@ -1,6 +1,8 @@
 'use strict'
+
 import * as DAT from 'dat.gui'
 import { mat4 } from 'gl-matrix'
+import { ScrollAmountHandler } from '../utils/scrollHandler.js'
 import { Camera } from './common/js/Camera.js'
 import { Clock } from './common/js/Clock.js'
 import { Controls } from './common/js/Controls.js'
@@ -26,7 +28,10 @@ let gl,
   aspect,
   progress,
   texAspectX,
-  texAspectY
+  texAspectY,
+  texIndex,
+  nextTexIndex,
+  texArray = []
 
 function configure() {
   const canvas = utils.getCanvas('webgl-canvas')
@@ -57,8 +62,6 @@ function configure() {
     'uOffscreen',
     'uSampler0',
     'uSampler1',
-    'uSampler2',
-    'uSampler3',
     'uTexAspectX',
     'uTexAspectY',
     'uAspect',
@@ -101,6 +104,7 @@ async function loadTextures() {
   await texture1.setImage('sky/sky-02.jpg')
   await texture2.setImage('sky/sky-03.jpg')
   await texture3.setImage('sky/sky-04.jpg')
+  texArray = [texture0, texture1, texture2, texture3]
 }
 
 function load() {
@@ -117,15 +121,6 @@ function render() {
 }
 
 function draw() {
-  const elapsedTime = clock.getElapsedTime()
-  progress = (() => {
-    let result = 1
-    result += elapsedTime / 1000
-    if (result > 1) {
-      result = 1
-    }
-    return result
-  })()
 
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
@@ -166,20 +161,12 @@ function draw() {
         gl.uniform1f(program.uTexAspectY, texAspectY)
 
         gl.activeTexture(gl.TEXTURE0)
-        gl.bindTexture(gl.TEXTURE_2D, texture0.glTexture)
+        gl.bindTexture(gl.TEXTURE_2D, texArray[texIndex].glTexture)
         gl.uniform1i(program.uSampler0, 0)
 
         gl.activeTexture(gl.TEXTURE1)
-        gl.bindTexture(gl.TEXTURE_2D, texture1.glTexture)
+        gl.bindTexture(gl.TEXTURE_2D, texArray[nextTexIndex].glTexture)
         gl.uniform1i(program.uSampler1, 1)
-
-        gl.activeTexture(gl.TEXTURE2)
-        gl.bindTexture(gl.TEXTURE_2D, texture2.glTexture)
-        gl.uniform1i(program.uSampler2, 2)
-
-        gl.activeTexture(gl.TEXTURE3)
-        gl.bindTexture(gl.TEXTURE_2D, texture3.glTexture)
-        gl.uniform1i(program.uSampler3, 3)
       }
 
       // Draw
@@ -195,32 +182,38 @@ function draw() {
   }
 }
 
-function addControls() {
-  const gui = new DAT.GUI()
-  const lightSettings = {
-    x: 0,
-    y: 0,
-    z: 0,
-  }
-  gui.add(lightSettings, 'x', -20, 20).onChange(updateLightPosition)
-  gui.add(lightSettings, 'y', -20, 20).onChange(updateLightPosition)
-  gui.add(lightSettings, 'z', -20, 20).onChange(updateLightPosition)
-  function updateLightPosition() {
-    gl.uniform3fv(program.uLightPosition, [lightSettings.x, lightSettings.y, lightSettings.z])
-  }
-}
+// function addControls() {
+//   const gui = new DAT.GUI()
+//   const lightSettings = {
+//     x: 0,
+//     y: 0,
+//     z: 0,
+//   }
+//   gui.add(lightSettings, 'x', -20, 20).onChange(updateLightPosition)
+//   gui.add(lightSettings, 'y', -20, 20).onChange(updateLightPosition)
+//   gui.add(lightSettings, 'z', -20, 20).onChange(updateLightPosition)
+//   function updateLightPosition() {
+//     gl.uniform3fv(program.uLightPosition, [lightSettings.x, lightSettings.y, lightSettings.z])
+//   }
+// }
 
 function resizeHandler() {
+  const currentWidth = window.innerWidth
+
   window.addEventListener('resize', () => {
-    resize()
-    updateAspect()
+    const newWidth = window.innerWidth
+    const widthDiff = newWidth - currentWidth
+    if (widthDiff > 0.1 || widthDiff < -0.1) {
+      console.log('resize')
+      resize()
+      updateAspect()
+    }
   })
   resize()
   updateAspect()
 }
 
 function resize() {
-  console.log('resized')
   scene.traverse((object) => {
     if (object.alias === 'plane') {
       object.scale[0] = window.innerWidth / window.innerHeight
@@ -241,11 +234,64 @@ function updateAspect() {
   // )
 }
 
+function scrollAmount() {
+  let scrollRatio, scrollAmountHandler, scroller, target
+  scroller = document.querySelector('.js-scroller')
+  target = document.querySelector('.js-scroller-target')
+
+  scrollAmountHandler = new ScrollAmountHandler({ targetDom: target })
+  scrollAmountHandler.update()
+  scrollRatio = scrollAmountHandler.getScrollRatio()
+  progress = progressHandler(scrollRatio)
+
+  scroller.addEventListener('scroll', () => {
+    scrollAmountHandler.update()
+    scrollRatio = scrollAmountHandler.getScrollRatio()
+    progress = progressHandler(scrollRatio)
+  })
+
+  window.addEventListener('resize', () => {
+    scrollAmountHandler.update()
+    scrollRatio = scrollAmountHandler.getScrollRatio()
+    progress = progressHandler(scrollRatio)
+  })
+}
+
+// function easing(t) {
+//   if (t < 0.5) {
+//     return 2 * t * t
+//   } else {
+//     return -1 + (4 - 2 * t) * t
+//   }
+// }
+
+function progressHandler(progress) {
+  const count = texArray.length - 1
+  const perImageProgress = 1 / count
+  texIndex = Math.floor(progress / perImageProgress)
+  nextTexIndex = texIndex + 1
+  if (nextTexIndex >= count) {
+    nextTexIndex = count
+  }
+  const transitionProgress = (progress % perImageProgress) / perImageProgress
+
+  if (transitionProgress < 0.4) {
+    progress = 0
+  } else if (transitionProgress > 0.6) {
+    progress = 1
+  } else {
+    const normalizedProgress = (transitionProgress - 0.4) / 0.2
+    progress = normalizedProgress
+  }
+  return progress
+}
+
 export async function init() {
   configure()
   await loadTextures()
   // addControls()
   load()
   resizeHandler()
+  scrollAmount()
   clock.on('tick', render)
 }

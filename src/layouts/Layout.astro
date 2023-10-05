@@ -10,7 +10,7 @@ export interface Props {
   barba?: boolean
   addtionalClass?: string
 }
-const { title = 'TKWD',addtionalClass = false } = Astro.props
+const { title = 'TKWD', addtionalClass = false } = Astro.props
 import '@/styles/style.scss'
 ---
 
@@ -26,7 +26,7 @@ import '@/styles/style.scss'
     <title>{title}</title>
   </head>
   <body class=`${addtionalClass}`>
-    <Header rootURL="https://github.com/yukaorange/"/>
+    <Header rootURL="https://github.com/yukaorange/" />
     <slot />
     <Footer />
     <CommonScripts />
@@ -37,9 +37,9 @@ import '@/styles/style.scss'
   body.dark {
     background-color: var(--dark);
   }
-  body.fixed{
+  body.fixed {
     position: fixed;
-    width: 100%;
+    width: var(--vw);
     height: 100vh;
   }
 </style>

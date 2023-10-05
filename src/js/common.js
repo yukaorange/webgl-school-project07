@@ -52,3 +52,21 @@ export class DrawerMenu {
     this.nav.setAttribute('aria-hidden', 'true')
   }
 }
+
+export function setViewPort() {
+  let vw = window.innerWidth
+  let documentWidth = document.documentElement.clientWidth
+  let scrollBarWidth = vw - documentWidth
+  let ajustWidth = vw - scrollBarWidth
+
+  document.documentElement.style.setProperty('--vw', `${ajustWidth}px`)
+
+  window.addEventListener('resize', () => {
+    vw = window.innerWidth
+    documentWidth = document.documentElement.clientWidth
+    scrollBarWidth = vw - documentWidth
+    ajustWidth = vw - scrollBarWidth
+
+    document.documentElement.style.setProperty('--vw', `${ajustWidth}px`)
+  })
+}

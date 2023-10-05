@@ -13,7 +13,6 @@
     "lint:style": "stylelint \"./src/**/*.{css,scss,astro}\" --fix --ignore-path .gitignore"
   },
   "dependencies": {
-    "@barba/core": "^2.9.7",
     "@fontsource-variable/roboto-mono": "^5.0.6",
     "@fontsource/kiwi-maru": "^5.0.5",
     "@fontsource/m-plus-rounded-1c": "^5.0.5",
@@ -49,7 +48,5 @@
     "typescript": "^5.2.2",
     "vite-plugin-glslify": "^2.0.2"
   },
-  "devDependencies": {
-    "barba.js": "^1.0.0"
-  }
+  "devDependencies": {}
 }

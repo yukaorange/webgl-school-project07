@@ -10,7 +10,7 @@ module.exports = {
   ],
   extends: ["stylelint-config-recess-order"],
   rules: {
-    "prettier/prettier": null,
+    // "prettier/prettier": null,
     "plugin/declaration-block-no-ignored-properties": true,
     "plugin/no-unsupported-browser-features": [
       null,

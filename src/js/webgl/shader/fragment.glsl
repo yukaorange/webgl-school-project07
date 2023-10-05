@@ -10,8 +10,6 @@ uniform vec4 uMaterialAmbient;
 uniform vec4 uMaterialDiffuse;
 uniform sampler2D uSampler0;
 uniform sampler2D uSampler1;
-uniform sampler2D uSampler2;
-uniform sampler2D uSampler3;
 
 in vec3 vNormal;
 in vec3 vLightRay;
@@ -51,25 +49,10 @@ void main(void) {
   uv = uv + vec2(0.5f);
 
   vec4 texColor;
-  float blendFactor;
-  
-  if(uProgress < 0.33f) {
-    blendFactor = uProgress / 0.33f;
-    vec4 texColor0 = texture(uSampler0, uv);
-    vec4 texColor1 = texture(uSampler1, uv);
-    texColor = mix(texColor0, texColor1, blendFactor);
-  } else if(uProgress < 0.66f) {
-    blendFactor = (uProgress - 0.33f) / 0.33f;
-    vec4 texColor1 = texture(uSampler1, uv);
-    vec4 texColor2 = texture(uSampler2, uv);
-    texColor = mix(texColor1, texColor2, blendFactor);
-  } else {
-    blendFactor = (uProgress - 0.66f) / 0.34f; //last segment needs +0.01f to avoid rounding errors
-    vec4 texColor2 = texture(uSampler2, uv);
-    vec4 texColor3 = texture(uSampler3, uv);
-    texColor = mix(texColor2, texColor3, blendFactor);
-  }
 
+  vec4 texColor0 = texture(uSampler0, uv);
+  vec4 texColor1 = texture(uSampler1, uv);
+  texColor = mix(texColor0, texColor1, uProgress);
 
   fragColor = finalColor * texColor;
 }

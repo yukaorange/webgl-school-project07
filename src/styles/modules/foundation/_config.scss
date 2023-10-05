@@ -1,8 +1,5 @@
 :root {
-  --vw: 136.6;
-  @media (max-width: 768px) {
-    --vw: 36;
-  }
+  --vw: 100vw;
 
   --max-width: min(calc(1920px * 0.9), calc(100% - 4rem));
   --note-width: 1024px;
@@ -23,7 +20,13 @@
 }
 
 html {
-  font-size: calc(100vw / var(--vw));
+  font-size: calc(var(--vw) / 136.6);
+}
+
+@media (max-width: 768px) {
+  html {
+    font-size: calc(var(--vw) / 36);
+  }
 }
 
 html.lenis {
