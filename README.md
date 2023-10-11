@@ -1,6 +1,10 @@
 # created in astro / using raw webgl api
 inspired: https://tympanus.net/Development/webGLImageTransitions/
 
+# TODO
+transisiton progress has a little bit slippage that I need to fix.
+loading animation is not linked with gl loading. I don't know how...
+
 starting with
 
 ```
