@@ -13,7 +13,7 @@ import { utils } from './common/js/utils.js'
 // import { Axis } from './common/js/Axis'
 import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
-import { ScrollAmountHandler } from '@/js/utils/ScrollHandler'
+import { ScrollAmountHandler } from '@/js/utils/ScrollHandler.js'
 
 
 
