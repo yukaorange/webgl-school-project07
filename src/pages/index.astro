@@ -1,9 +1,11 @@
 ---
 import Layout from '@/layouts/Layout.astro'
 import WebGL from '@/components/WebGL.astro'
+import Loading from '@/components/Loading.astro'
 ---
 
 <Layout title="takaoka_webdesigner" addtionalClass="fixed">
+  <Loading />
   <WebGL />
   <div class="container js-scroller">
     <div class="scrolle js-scroller-target">
@@ -67,8 +69,7 @@ import WebGL from '@/components/WebGL.astro'
     width: 100%;
     height: 100vh;
     overflow-y: scroll;
-    scroll-snap-type: y mandatory;
-    scroll-behavior: smooth;
+    scroll-snap-type: none;
   }
   .container::-webkit-scrollbar {
     display: none;
@@ -131,10 +132,14 @@ import WebGL from '@/components/WebGL.astro'
 </style>
 
 <script>
+  import { init } from '../js/webgl/main'
   import { Loading } from '@/js/utils/Loading'
   const loading = new Loading(
     document.querySelectorAll('#loading'),
     document.querySelector('#log'),
     document.querySelector('#progress'),
   )
+  window.addEventListener('load', () => {
+    init()
+  })
 </script>

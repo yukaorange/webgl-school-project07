@@ -295,7 +295,6 @@ function progressHandler(progress) {
     const normalizedProgress = (transitionProgress - 0.25) / 0.5
     progress = normalizedProgress
   }
-  console.log(progress)
   return progress
 }
 

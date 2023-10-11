@@ -31,7 +31,7 @@ export class Loading {
         () => {
           this.loadXHR(elements[i], i)
         },
-        `${i * 100}`,
+        `${i * 300}`,
       )
       console.log(`画像読み込み${i + 1}枚目完了`)
     }
