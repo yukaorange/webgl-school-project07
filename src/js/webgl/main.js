@@ -2,7 +2,6 @@
 
 // import * as DAT from 'dat.gui'
 import { mat4 } from 'gl-matrix'
-import { ScrollAmountHandler } from '../utils/ScrollHandler.js'
 import { Camera } from './common/js/Camera.js'
 import { Clock } from './common/js/Clock.js'
 import { Controls } from './common/js/Controls.js'
@@ -14,6 +13,7 @@ import { utils } from './common/js/utils.js'
 // import { Axis } from './common/js/Axis'
 import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
+import { ScrollAmountHandler } from '@/js/utils/ScrollHandler'
 
 let gl,
   scene,
