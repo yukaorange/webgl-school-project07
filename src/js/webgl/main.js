@@ -15,6 +15,8 @@ import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
 import { ScrollAmountHandler } from '@/js/utils/ScrollHandler'
 
+
+
 let gl,
   scene,
   camera,
