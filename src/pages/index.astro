@@ -1,7 +1,7 @@
 ---
-import Layout from '@/layouts/Layout.astro'
-import WebGL from '@/components/WebGL.astro'
 import Loading from '@/components/Loading.astro'
+import WebGL from '@/components/WebGL.astro'
+import Layout from '@/layouts/Layout.astro'
 ---
 
 <Layout title="takaoka_webdesigner" addtionalClass="fixed">
@@ -56,7 +56,7 @@ import Loading from '@/components/Loading.astro'
     </div>
     <div class="spacer">
       <div class="github-button">
-        <a href="https://github.com/yukaorange/"><i class="fa-brands fa-github"></i></a>
+        <a href="https://github.com/yukaorange/webgl-school-project07"><i class="fa-brands fa-github"></i></a>
       </div>
     </div>
   </div>
@@ -76,8 +76,8 @@ import Loading from '@/components/Loading.astro'
   }
   .spacer {
     display: grid;
-    justify-items: center;
     align-items: center;
+    justify-items: center;
     width: 100%;
     height: 100vh;
     background-color: #fff;
@@ -86,23 +86,23 @@ import Loading from '@/components/Loading.astro'
   .spacer .github-button {
     aspect-ratio: 1/1;
     a {
-      font-size: 20rem;
       display: block;
+      font-size: 20rem;
     }
   }
   .scroller {
   }
   .scroller-section {
-    height: 200vh;
     width: 100%;
+    height: 200vh;
   }
   .scroller-section:first-of-type .scroller-section__inner {
     padding-top: 25vh;
   }
   .scroller-section__inner {
-    padding-left: 2rem;
-    padding-right: 2rem;
     padding-top: 15rem;
+    padding-right: 2rem;
+    padding-left: 2rem;
   }
   .scroller-section__body {
     padding: 8rem 2.4rem;
@@ -110,15 +110,15 @@ import Loading from '@/components/Loading.astro'
   }
   .title {
     font-size: 10rem;
-    color: var(--white);
     line-height: 1.5;
+    color: var(--white);
     letter-spacing: 0.15em;
   }
   .text {
     margin-top: 5rem;
-    color: var(--white);
     font-size: 3.2rem;
     line-height: 2;
+    color: var(--white);
     letter-spacing: 0.1em;
   }
   @media (max-width: 780px) {

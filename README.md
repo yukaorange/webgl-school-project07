@@ -1,14 +1,17 @@
 # created in astro / using raw webgl api
 inspired: https://tympanus.net/Development/webGLImageTransitions/
+inspired: https://ochill.jp/
 
-# TODO
+## Developer TODO
 transisiton progress has a little bit slippage that I need to fix.
 loading animation is not linked with gl loading. I don't know how...
 
-starting with
+## starting with
 
 ```
 npm i 
+```
+```
 npm run dev
 ```
 
