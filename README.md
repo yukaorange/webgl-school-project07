@@ -1,4 +1,5 @@
 # created in astro / using raw webgl api
+inspired: https://tympanus.net/Development/webGLImageTransitions/
 
 starting with
 

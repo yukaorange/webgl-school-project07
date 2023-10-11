@@ -23,7 +23,7 @@ void main(void) {
 
   vNormal = vec3(uNormalMatrix * vec4(aVertexNormal, 1.0f));
   vLightRay = vertex.xyz - light.xyz;
-  vEyeVector = -vec3(vertex.xyz);
+  vEyeVector = -vec3(vertex.xyz);//this direction is the same as the camera position.because aVertexPosition * uModelViewMatrix = current view transform is view matrix.
 
   gl_Position = uProjectionMatrix * uModelViewMatrix * vec4(aVertexPosition, 1.0f);
 }

@@ -1,8 +1,8 @@
 'use strict'
 
-import * as DAT from 'dat.gui'
+// import * as DAT from 'dat.gui'
 import { mat4 } from 'gl-matrix'
-import { ScrollAmountHandler } from '../utils/scrollHandler.js'
+import { ScrollAmountHandler } from '../utils/ScrollHandler.js'
 import { Camera } from './common/js/Camera.js'
 import { Clock } from './common/js/Clock.js'
 import { Controls } from './common/js/Controls.js'
@@ -25,6 +25,7 @@ let gl,
   texture1,
   texture2,
   texture3,
+  displacement,
   aspect,
   progress,
   texAspectX,
@@ -62,10 +63,12 @@ function configure() {
     'uOffscreen',
     'uSampler0',
     'uSampler1',
+    'uDisplacement',
     'uTexAspectX',
     'uTexAspectY',
     'uAspect',
     'uProgress',
+    'uTime',
   ]
 
   let fov = 45
@@ -92,10 +95,11 @@ function configure() {
   texture1 = new Texture(gl)
   texture2 = new Texture(gl)
   texture3 = new Texture(gl)
+  displacement = new Texture(gl)
 
-  gl.uniform3fv(program.uLightPosition, [20, 20, 20])
-  gl.uniform4fv(program.uLightAmbient, [1, 1, 1, 1])
-  gl.uniform4fv(program.uLightDiffuse, [1, 1, 1, 1])
+  gl.uniform3fv(program.uLightPosition, [10, 20, 10])
+  gl.uniform4fv(program.uLightAmbient, [0.1, 0.1, 0.1, 1])
+  gl.uniform4fv(program.uLightDiffuse, [0.99, 0.99, 0.99, 0])
   gl.uniform1f(program.uAlpha, 1)
 }
 
@@ -104,6 +108,7 @@ async function loadTextures() {
   await texture1.setImage('sky/sky-02.jpg')
   await texture2.setImage('sky/sky-03.jpg')
   await texture3.setImage('sky/sky-04.jpg')
+  await displacement.setImage('textures/disp1.jpg')
   texArray = [texture0, texture1, texture2, texture3]
 }
 
@@ -121,7 +126,7 @@ function render() {
 }
 
 function draw() {
-
+  const elapsedTime = clock.getElapsedTime() / 1000
   gl.viewport(0, 0, gl.canvas.width, gl.canvas.height)
   gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT)
   transforms.updatePerspective()
@@ -150,6 +155,7 @@ function draw() {
       gl.uniform1i(program.uUseVertexColor, false)
       gl.uniform1f(program.uProgress, progress)
       gl.uniform1f(program.uAspect, aspect)
+      gl.uniform1f(program.uTime, elapsedTime)
 
       // Bind
       gl.bindVertexArray(object.vao)
@@ -167,6 +173,10 @@ function draw() {
         gl.activeTexture(gl.TEXTURE1)
         gl.bindTexture(gl.TEXTURE_2D, texArray[nextTexIndex].glTexture)
         gl.uniform1i(program.uSampler1, 1)
+
+        gl.activeTexture(gl.TEXTURE2)
+        gl.bindTexture(gl.TEXTURE_2D, displacement.glTexture, 2)
+        gl.uniform1i(program.uDisplacement, 2)
       }
 
       // Draw
@@ -176,6 +186,7 @@ function draw() {
       gl.bindVertexArray(null)
       gl.bindBuffer(gl.ARRAY_BUFFER, null)
       gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null)
+      gl.bindTexture(gl.TEXTURE_2D, null)
     })
   } catch (error) {
     console.error(error)
@@ -275,14 +286,16 @@ function progressHandler(progress) {
   }
   const transitionProgress = (progress % perImageProgress) / perImageProgress
 
-  if (transitionProgress < 0.4) {
+
+  if (transitionProgress < 0.25) {
     progress = 0
-  } else if (transitionProgress > 0.6) {
+  } else if (transitionProgress > 0.75) {
     progress = 1
   } else {
-    const normalizedProgress = (transitionProgress - 0.4) / 0.2
+    const normalizedProgress = (transitionProgress - 0.25) / 0.5
     progress = normalizedProgress
   }
+  console.log(progress)
   return progress
 }
 
