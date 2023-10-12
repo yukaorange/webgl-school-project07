@@ -7,10 +7,12 @@ import '@fontsource/kiwi-maru'
 import '@fontsource/m-plus-rounded-1c'
 export interface Props {
   title: string
+  description: string
+  imageUrl ?: string
   barba?: boolean
   addtionalClass?: string
 }
-const { title = 'TKWD', addtionalClass = false } = Astro.props
+const { title = 'TKWD', description = 'ポートフォリオ',imageUrl="/art/art01.jpg", addtionalClass = false } = Astro.props
 import '@/styles/style.scss'
 ---
 
@@ -21,6 +23,13 @@ import '@/styles/style.scss'
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content="description" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={imageUrl} />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+
     <link rel="icon" href="/favicon.png" />
     <script src="https://kit.fontawesome.com/076c3b3ad5.js" crossorigin="anonymous"></script>
     <title>{title}</title>
