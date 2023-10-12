@@ -76,11 +76,13 @@ import Layout from '@/layouts/Layout.astro'
     height: 100vh;
     overflow-y: scroll;
     scroll-snap-type: none;
+    overscroll-behavior: contain;
   }
   .container::-webkit-scrollbar {
     display: none;
   }
   .spacer {
+    margin-top: 20rem;
     display: grid;
     align-items: center;
     justify-items: center;
@@ -131,9 +133,6 @@ import Layout from '@/layouts/Layout.astro'
     letter-spacing: 0.1em;
   }
   @media (max-width: 780px) {
-    .spacer {
-      height: 100svh;
-    }
     .scroller-section {
       height: 100svh;
     }
