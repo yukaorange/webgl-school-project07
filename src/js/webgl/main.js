@@ -2,7 +2,6 @@
 
 // import * as DAT from 'dat.gui'
 import { mat4 } from 'gl-matrix'
-import { ScrollAmountHandler } from '../../js/utils/ScrollHandler.js'
 import { Camera } from './common/js/Camera.js'
 import { Clock } from './common/js/Clock.js'
 import { Controls } from './common/js/Controls.js'
@@ -14,6 +13,7 @@ import { utils } from './common/js/utils.js'
 // import { Axis } from './common/js/Axis'
 import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
+import { ScrollAmountHandler } from '@/js/utils/ScrollHandler'
 
 let gl,
   scene,
@@ -254,23 +254,25 @@ function scrollAmount() {
   scrollAmountHandler.update()
   scrollRatio = scrollAmountHandler.getScrollRatio()
   progress = progressHandler(scrollRatio)
+  
 
   scroller.addEventListener('scroll', () => {
     scrollAmountHandler.update()
     scrollRatio = scrollAmountHandler.getScrollRatio()
     progress = progressHandler(scrollRatio)
+    
   })
 
   window.addEventListener('resize', () => {
     scrollAmountHandler.update()
     scrollRatio = scrollAmountHandler.getScrollRatio()
     progress = progressHandler(scrollRatio)
+    
   })
 }
 
-function progressHandler(progress) {
-  
 
+function progressHandler(progress) {
   const count = texArray.length - 1
   const perImageProgress = 1 / count
   texIndex = Math.floor(progress / perImageProgress)
