@@ -27,7 +27,9 @@ let gl,
   texture3,
   displacement,
   aspect,
-  progress,
+  progress = 0,
+  targetProgress,
+  scrollRatio,
   texAspectX,
   texAspectY,
   texIndex,
@@ -122,6 +124,15 @@ function load() {
 }
 
 function render() {
+  scrollRatio = updateScrollAmount(scrollRatio)
+  targetProgress = updateProgress(scrollRatio)
+  if (targetProgress === 1) {
+    progress = 0.99
+  }
+  if (targetProgress === 0) {
+    progress = 0.01
+  }
+  progress += (targetProgress - progress) * 0.1 
   draw()
 }
 
@@ -245,53 +256,47 @@ function updateAspect() {
   // )
 }
 
-function scrollAmount() {
-  let scrollRatio, scrollAmountHandler, scroller, target
+function updateScrollAmount(scrollRatio) {
+  let scrollAmountHandler, scroller, target
   scroller = document.querySelector('.js-scroller')
   target = document.querySelector('.js-scroller-target')
 
   scrollAmountHandler = new ScrollAmountHandler({ targetDom: target })
   scrollAmountHandler.update()
   scrollRatio = scrollAmountHandler.getScrollRatio()
-  progress = progressHandler(scrollRatio)
-  
 
   scroller.addEventListener('scroll', () => {
     scrollAmountHandler.update()
     scrollRatio = scrollAmountHandler.getScrollRatio()
-    progress = progressHandler(scrollRatio)
-    
   })
 
   window.addEventListener('resize', () => {
     scrollAmountHandler.update()
     scrollRatio = scrollAmountHandler.getScrollRatio()
-    progress = progressHandler(scrollRatio)
-    
   })
+  return scrollRatio
 }
 
-
-function progressHandler(progress) {
+function updateProgress(scrollRatio) {
   const count = texArray.length - 1
   const perImageProgress = 1 / count
-  texIndex = Math.floor(progress / perImageProgress)
+  texIndex = Math.floor(scrollRatio / perImageProgress)
   nextTexIndex = texIndex + 1
   if (nextTexIndex >= count) {
     nextTexIndex = count
   }
-  const transitionProgress = (progress % perImageProgress) / perImageProgress
+  const transitionProgress = (scrollRatio % perImageProgress) / perImageProgress
 
   if (transitionProgress < 0.25) {
-    progress = 0
+    scrollRatio = 0
   } else if (transitionProgress > 0.75) {
-    progress = 1
+    scrollRatio = 1
   } else {
     const normalizedProgress = (transitionProgress - 0.25) / 0.5
-    progress = normalizedProgress
+    scrollRatio = normalizedProgress
   }
   // console.log(`progress:${progress}\n`, `texIndex:${texIndex}\n`, `nextTexIndex:${nextTexIndex}`)
-  return progress
+  return scrollRatio
 }
 
 export async function init() {
@@ -300,6 +305,6 @@ export async function init() {
   // addControls()
   load()
   resizeHandler()
-  scrollAmount()
+  updateScrollAmount(scrollRatio)
   clock.on('tick', render)
 }
