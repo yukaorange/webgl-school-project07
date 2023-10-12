@@ -2,7 +2,7 @@
 
 // import * as DAT from 'dat.gui'
 import { mat4 } from 'gl-matrix'
-import { ScrollAmountHandler } from 'src/js/utils/ScrollHandler.js'
+import { ScrollAmountHandler } from '../../js/utils/ScrollHandler.js'
 import { Camera } from './common/js/Camera.js'
 import { Clock } from './common/js/Clock.js'
 import { Controls } from './common/js/Controls.js'
