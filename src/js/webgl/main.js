@@ -13,9 +13,7 @@ import { utils } from './common/js/utils.js'
 // import { Axis } from './common/js/Axis'
 import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
-import { ScrollAmountHandler } from '@/js/utils/ScrollHandler.js'
-
-
+import { ScrollAmountHandler } from '/src/js/utils/ScrollHandler.js'
 
 let gl,
   scene,
@@ -101,7 +99,7 @@ function configure() {
 
   gl.uniform3fv(program.uLightPosition, [10, 20, 10])
   gl.uniform4fv(program.uLightAmbient, [0.1, 0.1, 0.1, 1])
-  gl.uniform4fv(program.uLightDiffuse, [0.99, 0.99, 0.99, 0])
+  gl.uniform4fv(program.uLightDiffuse, [0.69, 0.69, 0.69, 0])
   gl.uniform1f(program.uAlpha, 1)
 }
 
@@ -270,15 +268,9 @@ function scrollAmount() {
   })
 }
 
-// function easing(t) {
-//   if (t < 0.5) {
-//     return 2 * t * t
-//   } else {
-//     return -1 + (4 - 2 * t) * t
-//   }
-// }
-
 function progressHandler(progress) {
+  
+
   const count = texArray.length - 1
   const perImageProgress = 1 / count
   texIndex = Math.floor(progress / perImageProgress)
@@ -288,7 +280,6 @@ function progressHandler(progress) {
   }
   const transitionProgress = (progress % perImageProgress) / perImageProgress
 
-
   if (transitionProgress < 0.25) {
     progress = 0
   } else if (transitionProgress > 0.75) {
@@ -297,6 +288,7 @@ function progressHandler(progress) {
     const normalizedProgress = (transitionProgress - 0.25) / 0.5
     progress = normalizedProgress
   }
+  // console.log(`progress:${progress}\n`, `texIndex:${texIndex}\n`, `nextTexIndex:${nextTexIndex}`)
   return progress
 }
 
