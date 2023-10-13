@@ -72,6 +72,7 @@ void main(void) {
 
   texColor0 = texture(uSampler0, uv1);
   texColor1 = texture(uSampler1, uv2);
+  
 
   vec4 texColor = mix(texColor0, texColor1, p);
 

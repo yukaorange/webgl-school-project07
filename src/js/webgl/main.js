@@ -2,6 +2,7 @@
 
 // import * as DAT from 'dat.gui'
 import { mat4 } from 'gl-matrix'
+import Stats from 'stats.js'
 import { Camera } from './common/js/Camera.js'
 import { Clock } from './common/js/Clock.js'
 import { Controls } from './common/js/Controls.js'
@@ -13,7 +14,7 @@ import { utils } from './common/js/utils.js'
 // import { Axis } from './common/js/Axis'
 import fragmentShader from './shader/fragment.glsl'
 import vertexShader from './shader/vertex.glsl'
-import { ScrollAmountHandler } from '@/js/utils/ScrollHandler'
+import { ScrollAmountHandler } from '@/js/utils/ScrollAmountHandler'
 
 let gl,
   scene,
@@ -35,6 +36,15 @@ let gl,
   texIndex,
   nextTexIndex,
   texArray = []
+
+let scroller = document.querySelector('.js-scroller')
+let target = document.querySelector('.js-scroller-target')
+let scrollAmountHandler = new ScrollAmountHandler({ targetDom: target })
+
+const stats = new Stats()
+stats.showPanel(0)
+document.body.appendChild(stats.dom)
+console.log(stats)
 
 function configure() {
   const canvas = utils.getCanvas('webgl-canvas')
@@ -106,10 +116,10 @@ function configure() {
 }
 
 async function loadTextures() {
-  await texture0.setImage('sky/sky-01.jpg')
-  await texture1.setImage('sky/sky-02.jpg')
-  await texture2.setImage('sky/sky-03.jpg')
-  await texture3.setImage('sky/sky-04.jpg')
+  await texture0.setImage('sky/sky-01.webp')
+  await texture1.setImage('sky/sky-02.webp')
+  await texture2.setImage('sky/sky-03.webp')
+  await texture3.setImage('sky/sky-04.webp')
   await displacement.setImage('textures/disp1.jpg')
   texArray = [texture0, texture1, texture2, texture3]
 }
@@ -124,7 +134,7 @@ function load() {
 }
 
 function render() {
-  scrollRatio = updateScrollAmount(scrollRatio)
+  scrollRatio = updateScrollAmount()
   targetProgress = updateProgress(scrollRatio)
   if (targetProgress === 1) {
     progress = 0.99
@@ -132,8 +142,10 @@ function render() {
   if (targetProgress === 0) {
     progress = 0.01
   }
-  progress += (targetProgress - progress) * 0.1 
+  progress += (targetProgress - progress) * 0.1
+  stats.begin()
   draw()
+  stats.end()
 }
 
 function draw() {
@@ -194,10 +206,10 @@ function draw() {
       gl.drawElements(gl.TRIANGLES, object.indices.length, gl.UNSIGNED_SHORT, 0)
 
       // Clean
-      gl.bindVertexArray(null)
-      gl.bindBuffer(gl.ARRAY_BUFFER, null)
-      gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null)
-      gl.bindTexture(gl.TEXTURE_2D, null)
+      // gl.bindVertexArray(null)
+      // gl.bindBuffer(gl.ARRAY_BUFFER, null)
+      // gl.bindBuffer(gl.ELEMENT_ARRAY_BUFFER, null)
+      // gl.bindTexture(gl.TEXTURE_2D, null)
     })
   } catch (error) {
     console.error(error)
@@ -256,25 +268,13 @@ function updateAspect() {
   // )
 }
 
-function updateScrollAmount(scrollRatio) {
-  let scrollAmountHandler, scroller, target
-  scroller = document.querySelector('.js-scroller')
-  target = document.querySelector('.js-scroller-target')
-
-  scrollAmountHandler = new ScrollAmountHandler({ targetDom: target })
+function updateScrollAmount() {
+  if (!scrollAmountHandler) {
+    const target = document.querySelector('.js-scroller-target')
+    scrollAmountHandler = new ScrollAmountHandler({ targetDom: target })
+  }
   scrollAmountHandler.update()
-  scrollRatio = scrollAmountHandler.getScrollRatio()
-
-  scroller.addEventListener('scroll', () => {
-    scrollAmountHandler.update()
-    scrollRatio = scrollAmountHandler.getScrollRatio()
-  })
-
-  window.addEventListener('resize', () => {
-    scrollAmountHandler.update()
-    scrollRatio = scrollAmountHandler.getScrollRatio()
-  })
-  return scrollRatio
+  return scrollAmountHandler.getScrollRatio()
 }
 
 function updateProgress(scrollRatio) {
@@ -305,6 +305,15 @@ export async function init() {
   // addControls()
   load()
   resizeHandler()
-  updateScrollAmount(scrollRatio)
+
+  scroller.addEventListener('scroll', () => {
+    updateScrollAmount()
+  })
+
+  window.addEventListener('resize', () => {
+    updateScrollAmount()
+    updateAspect()
+  })
+
   clock.on('tick', render)
 }
