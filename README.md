@@ -1,4 +1,6 @@
 # created in astro / using raw webgl api
+deploy: https://webgl-school-project07.vercel.app/  
+  
 inspired: https://tympanus.net/Development/webGLImageTransitions/  
 inspired: https://ochill.jp/
 
